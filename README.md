@@ -23,6 +23,8 @@ Copy and Paste into your browser and enable the highlighted flag for 'Web Blueto
 -[Noble NPM](https://github.com/sandeepmistry/noble)
 -[Orbotix](https://github.com/orbotix)
 
+-[Nimble Ape](https://nimblea.pe/monkey-business/2015/12/17/these-arent-the-droids-youre-looking-for/)
+
 -[Google Dev on Web Bluetooth](https://developers.google.com/web/updates/2015/07/interact-with-ble-devices-on-the-web?hl=en)
 -[Code Snippet](https://googlechrome.github.io/samples/web-bluetooth/device-info.html)
 -[BlueTooth Web Community Spec Report](https://webbluetoothcg.github.io/web-bluetooth/)
