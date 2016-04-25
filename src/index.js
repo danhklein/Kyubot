@@ -1,13 +1,24 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Component } from 'react';
+import ReactDom from 'react-dom';
+import RandomForm from './components/kyuPad';
+import NavButtons from './components/navButtons';
+import SpheroConnectButton from './components/spheroConnectButton';
 
-import App from './components/app';
-import reducers from './reducers';
+class App extends Component {
+  render() {
+    return (
+      <div>
+      <NavButtons />
+      <RandomForm />
+      <SpheroConnectButton />
+      </div>
+    );
+  }
+}
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-ReactDOM.render(
-
-    <App />
-
-  , document.querySelector('.container'));
+ReactDom.render(
+  <App />,
+  document.querySelector('.container')
+)
