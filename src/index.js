@@ -4,6 +4,9 @@ import ReactDom from 'react-dom';
 import RandomForm from './components/kyuPad';
 import NavButtons from './components/navButtons';
 import SpheroConnectButton from './components/spheroConnectButton';
+import SavedSequences from './components/savedSequences';
+import CurrentlyHappening from './components/currentlyHappening';
+import CurrentBuild from './components/currentBuild';
 
 class App extends Component {
   render() {
@@ -12,6 +15,9 @@ class App extends Component {
       <NavButtons />
       <RandomForm />
       <SpheroConnectButton />
+      <SavedSequences />
+      <CurrentlyHappening />
+      <CurrentBuild />
       </div>
     );
   }
