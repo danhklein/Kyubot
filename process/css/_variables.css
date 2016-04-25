@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Play:400,700);
+
+$font-main: Play, Helvetica, Arial, sans-serif;
+$font-weight-normal: 300;
+$font-weight-heavy: 700;
+
+
+$darkblue: #022933;
+$yellow: #F3D350;
+
+$color-main: black;
+$color-background: #B8B8B8;
+
+$small: screen and (min-width: 600px);
+$medium: screen and (min-width: 900px);
+$large: screen and (min-width: 1200px);
+
+
+$container-default-width: 80%;
+$container-max-width: 1200px;
