@@ -63,6 +63,7 @@ class SpheroConnectButton extends Component {
 .then(characteristic => {
         console.log('> Found TX Power characteristic', characteristic);
     let array = new Uint8Array([0x07]);
+    console.log('arraaaaaaayyyy',array);
     return characteristic.writeValue(array).then(() => {
             console.log('TX Power write done.');
 })

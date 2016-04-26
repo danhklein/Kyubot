@@ -19993,6 +19993,7 @@
 	        .then(function (characteristic) {
 	          console.log('> Found TX Power characteristic', characteristic);
 	          var array = new Uint8Array([0x07]);
+	          console.log('arraaaaaaayyyy', array);
 	          return characteristic.writeValue(array).then(function () {
 	            console.log('TX Power write done.');
 	          });
