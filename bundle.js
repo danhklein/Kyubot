@@ -19952,7 +19952,7 @@
 	        }).then(function (server) {
 	          gattServer = server;
 	          // Get radio service
-	          console.log('Connected to ' + gattServer);
+	          console.log('Connected!');
 	          return gattServer.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
 	        }).catch(function (err) {
 	          console.log(err);
