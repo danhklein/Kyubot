@@ -7,7 +7,7 @@ class SpheroConnectButton extends Component {
 
   render() {
   return (
-    <button onClick={this.spheroConnect}>Find Sphero</button>
+    <button id="connect" onClick={this.spheroConnect}>Find Sphero</button>
   );
   }
 }
