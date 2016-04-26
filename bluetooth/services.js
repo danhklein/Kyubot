@@ -14,7 +14,7 @@ function setColor(r, g, b) {
 })
 .catch(handleError);
 }
-function roll(heading) {
+function roll(speed, heading) {
     console.log('Roll heading='+heading);
     if (busy) {
         // Return if another operation pending
@@ -24,7 +24,7 @@ function roll(heading) {
     let did = 0x02; // Virtual device ID
     let cid = 0x30; // Roll command
     // Roll command data: speed, heading (MSB), heading (LSB), state
-    let data = new Uint8Array([10, heading >> 8, heading & 0xFF, 1]);
+    let data = new Uint8Array([speed, heading >> 8, heading & 0xFF, 1]);
     sendCommand(did, cid, data).then(() => {
         busy = false;
 })
