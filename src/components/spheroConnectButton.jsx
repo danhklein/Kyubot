@@ -54,12 +54,20 @@ class SpheroConnectButton extends Component {
     // Get Anti DOS characteristic
        return service.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
            })
+.then(characteristic => {
+        console.log('> Found Anti DOS characteristic');
+    // Send special string
+    let bytes = new Uint8Array('011i3'.split('').map(c => c.charCodeAt()));
+    return characteristic.writeValue(bytes).then(() => {
+            console.log('Anti DOS write done.');
+    })
+  })
 
-// .then(service => {
-//         // Get TX Power characteristic
-//         console.log('service2', service)
-//         return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
-// })
+.then(() => {
+        // Get TX Power characteristic
+        console.log('service2', service)
+        return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
+})
 .then(characteristic => {
         console.log('> Found TX Power characteristic', characteristic);
     let array = new Uint8Array([0x07]);
