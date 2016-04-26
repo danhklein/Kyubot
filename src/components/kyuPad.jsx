@@ -37,7 +37,7 @@ class RandomForm extends Component {
               + (joystick.up()  ? ' up'   : '')
               + (joystick.left()  ? ' left' : '')
               + (joystick.down()  ? ' down'   : '')
-          }, 10)
+          })
   }
 
    render() {

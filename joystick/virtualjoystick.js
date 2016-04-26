@@ -334,6 +334,8 @@ VirtualJoystick.prototype._buildJoystickBase  = function()
   ctx.arc( canvas.width/2, canvas.width/2, 60, 0, Math.PI*2, true);
   ctx.stroke();
 
+  canvas.classList.add('canvas');
+
   return canvas;
 }
 
