@@ -47,6 +47,12 @@ class SpheroConnectButton extends Component {
           console.log('Connected!');
            server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
         })
+        .then(service => {
+        // Developer mode sequence is sent to the radio service
+        radioService = service;
+    // Get Anti DOS characteristic
+       radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
+})
             .catch(function (err) {
               console.log(err)
             })

@@ -17,16 +17,16 @@ document.querySelector('#connect').addEventListener('click', () => {
 .then(server => {
         // gattServer = server;
     // Get radio service
-      
+
     return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
 })
-    
-// .then(service => {
-//         // Developer mode sequence is sent to the radio service
-//         radioService = service;
-//     // Get Anti DOS characteristic
-//     return radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
-// })
+
+.then(service => {
+        // Developer mode sequence is sent to the radio service
+        radioService = service;
+    // Get Anti DOS characteristic
+    return radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
+})
 // .then(characteristic => {
 //         console.log('> Found Anti DOS characteristic');
 //     // Send special string
