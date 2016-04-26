@@ -55,10 +55,10 @@ class SpheroConnectButton extends Component {
        return service.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
            })
 
-// .then(() => {
-//         // Get TX Power characteristic
-//         return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
-// })
+.then(() => {
+        // Get TX Power characteristic
+        return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
+})
 .then(characteristic => {
         console.log('> Found TX Power characteristic');
     let array = new Uint8Array([0x07]);
