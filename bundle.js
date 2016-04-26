@@ -19788,8 +19788,8 @@
 	      var joystick = new VirtualJoystick({
 	        mouseSupport: true,
 	        stationaryBase: true,
-	        baseX: 200,
-	        baseY: 200,
+	        baseX: 600,
+	        baseY: 300,
 	        limitStickTravel: true,
 	        stickRadius: 100
 	      });
