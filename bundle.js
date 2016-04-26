@@ -19936,6 +19936,27 @@
 	  _createClass(SpheroConnectButton, [{
 	    key: 'spheroConnect',
 	    value: function spheroConnect() {
+	      var gattServer = void 0;
+	      //   let radioService;
+	      //   let robotService;
+	      //   let controlCharacteristic;
+	      //   let sequence = 0;
+	      //   let heading = 0;
+	      //   let busy = false;
+	      //   progress.hidden = true;
+	      //   if (navigator.bluetooth == undefined) {
+	      //     document.getElementById("no-bluetooth").open();
+	      //   }
+	      //   function handleError(error)
+	      //   console.log(error);
+	      //   progress.hidden = true;
+	      //   gattServer = null;
+	      //   radioService = null;
+	      //   robotService = null;
+	      //   controlCharacteristic = null;
+	      //   dialog.open();
+	      // }
+
 	      document.querySelector('#connect').addEventListener('click', function () {
 
 	        // Can only send commands once device is in developer mode.

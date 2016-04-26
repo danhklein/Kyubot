@@ -2,7 +2,29 @@ import React, { Component } from 'react';
 
 class SpheroConnectButton extends Component {
   spheroConnect() {
-    document.querySelector('#connect').addEventListener('click', () => {
+    let gattServer;
+  //   let radioService;
+  //   let robotService;
+  //   let controlCharacteristic;
+  //   let sequence = 0;
+  //   let heading = 0;
+  //   let busy = false;
+  //   progress.hidden = true;
+  //   if (navigator.bluetooth == undefined) {
+  //     document.getElementById("no-bluetooth").open();
+  //   }
+  //   function handleError(error)
+  //   console.log(error);
+  //   progress.hidden = true;
+  //   gattServer = null;
+  //   radioService = null;
+  //   robotService = null;
+  //   controlCharacteristic = null;
+  //   dialog.open();
+  // }
+
+
+  document.querySelector('#connect').addEventListener('click', () => {
 
 // Can only send commands once device is in developer mode.
 // Put device into developer mode by sending a special string to Anti DOS,
