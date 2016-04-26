@@ -12,13 +12,13 @@ if (controlCharacteristic == null) {
         .then(device => {
         console.log('> Found ' + device.name);
     console.log('Connecting to GATT Server...');
-    // return device.connectGATT();
+    return device.connectGATT();
 })
-// .then(server => {
-//         gattServer = server;
-//     // Get radio service
-//     return gattServer.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
-// })
+.then(server => {
+        gattServer = server;
+    // Get radio service
+    return gattServer.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
+})
 // .then(service => {
 //         // Developer mode sequence is sent to the radio service
 //         radioService = service;
