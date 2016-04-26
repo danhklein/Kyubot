@@ -42,6 +42,7 @@ class SpheroConnectButton extends Component {
         .then(server => {
           // gattServer = server;
           // Get radio service
+            console.log(server);
           console.log('Connected!');
            server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
         })
