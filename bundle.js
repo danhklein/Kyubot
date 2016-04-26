@@ -19970,7 +19970,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          device.connectGATT();
+	          return device.gatt.connect();
 	        }).then(function (server) {
 	          // gattServer = server;
 	          // Get radio service
