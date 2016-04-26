@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class SpheroConnectButton extends Component {
   spheroConnect() {
 
-  //   let radioService;
+    let radioService;
   //   let robotService;
   //   let controlCharacteristic;
   //   let sequence = 0;
@@ -43,15 +43,16 @@ class SpheroConnectButton extends Component {
         .then(server => {
           // gattServer = server;
           // Get radio service
-            console.log(server);
+            console.log('server', server);
           console.log('Connected!');
-           server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
+           return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
         })
         .then(service => {
         // Developer mode sequence is sent to the radio service
-        radioService = service;
+        console.log('service', service);
+
     // Get Anti DOS characteristic
-       radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
+       return service.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
 })
             .catch(function (err) {
               console.log(err)
