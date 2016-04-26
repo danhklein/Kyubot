@@ -1,5 +1,6 @@
 'use strict';
 document.addEventListener('WebComponentsReady', () => {
+
     let connectToggle = document.querySelector('#connect');
 let progress = document.querySelector('#progress');
 let dialog = document.querySelector('#dialog');
