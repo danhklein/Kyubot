@@ -1,4 +1,4 @@
-connectToggle.addEventListener('click', () => {
+document.querySelector('#connect').addEventListener('click', () => {
     progress.hidden = false;
 // Can only send commands once device is in developer mode.
 // Put device into developer mode by sending a special string to Anti DOS,
