@@ -1,9 +1,9 @@
 document.querySelector('#connect').addEventListener('click', () => {
-    progress.hidden = false;
+    // progress.hidden = false;
 // Can only send commands once device is in developer mode.
 // Put device into developer mode by sending a special string to Anti DOS,
 // 7 to TX Power and 1 to Wake CPU on radio service.
-if (controlCharacteristic == null) {
+// if (controlCharacteristic == null) {
     navigator.bluetooth.requestDevice({
             filters: [{
                 services: ['22bb746f-2bb0-7554-2d6f-726568705327']
@@ -17,8 +17,10 @@ if (controlCharacteristic == null) {
 .then(server => {
         // gattServer = server;
     // Get radio service
+      
     return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
 })
+    
 // .then(service => {
 //         // Developer mode sequence is sent to the radio service
 //         radioService = service;
@@ -72,9 +74,7 @@ if (controlCharacteristic == null) {
 //     progress.hidden = true;
 //     return setColor(0, 250, 0);
 // })
-.catch(handleError);
-} else {
-    progress.hidden = true;
-    setColor(0, 250, 0);
-}
-});
+.catch(function(err) {
+    return err;
+        )}
+};
