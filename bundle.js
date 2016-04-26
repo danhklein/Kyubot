@@ -19983,12 +19983,15 @@
 
 	          // Get Anti DOS characteristic
 	          return service.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
-	        }).then(function (service) {
-	          // Get TX Power characteristic
-	          console.log('service2', service);
-	          return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
-	        }).then(function (characteristic) {
-	          console.log('> Found TX Power characteristic');
+	        })
+
+	        // .then(service => {
+	        //         // Get TX Power characteristic
+	        //         console.log('service2', service)
+	        //         return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
+	        // })
+	        .then(function (characteristic) {
+	          console.log('> Found TX Power characteristic', characteristic);
 	          var array = new Uint8Array([0x07]);
 	          return characteristic.writeValue(array).then(function () {
 	            console.log('TX Power write done.');
