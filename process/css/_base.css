@@ -1,0 +1,41 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 1rem;
+  padding: 1rem;
+  color: black;
+  background-color: $color-background;
+  font-family: $font-main;
+  line-height: 160%;
+  font-size: 1.8rem;
+  font-weight: $font-weight-normal;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+  font-family: $font-main;
+}
+
+img {
+  dispaly: block;
+}
+
+
+.container {
+  width: $container-default-width;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+canvas {
+  color: white;
+}
+
