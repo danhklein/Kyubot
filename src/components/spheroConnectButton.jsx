@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class SpheroConnectButton extends Component {
   spheroConnect() {
-    let gattServer;
+
   //   let radioService;
   //   let robotService;
   //   let controlCharacteristic;
@@ -37,13 +37,13 @@ class SpheroConnectButton extends Component {
             .then(device => {
               console.log('> Found ' + device.name);
               console.log('Connecting to GATT Server...');
-              return device.connectGATT();
+               device.connectGATT();
         })
         .then(server => {
           // gattServer = server;
           // Get radio service
           console.log('Connected!');
-          return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
+           server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
         })
             .catch(function (err) {
               console.log(err)
