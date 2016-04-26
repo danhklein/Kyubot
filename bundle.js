@@ -19983,7 +19983,7 @@
 
 	          // Get Anti DOS characteristic
 	          return service.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
-	        }).then(function () {
+	        }).then(function (service) {
 	          // Get TX Power characteristic
 	          console.log('service2', service);
 	          return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
@@ -19993,24 +19993,28 @@
 	          return characteristic.writeValue(array).then(function () {
 	            console.log('TX Power write done.');
 	          });
-	        }).then(function () {
-	          // Get Wake CPU characteristic
-	          return service.getCharacteristic("22bb746f-2bbf-7554-2d6f-726568705327");
-	        }).then(function (characteristic) {
-	          console.log('> Found Wake CPU characteristic');
-	          var array = new Uint8Array([0x01]);
-	          return characteristic.writeValue(array).then(function () {
-	            console.log('Wake CPU write done.');
-	          });
-	        }).then(function () {
-	          // Get robot service
-	          return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327");
-	        }).then(function (service) {
-	          // Commands are sent to the robot service
-
-	          // Get Control characteristic
-	          return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
 	        })
+	        // .then(() => {
+	        //         // Get Wake CPU characteristic
+	        //         return service.getCharacteristic("22bb746f-2bbf-7554-2d6f-726568705327");
+	        // })
+	        // .then(characteristic => {
+	        //         console.log('> Found Wake CPU characteristic');
+	        //     let array = new Uint8Array([0x01]);
+	        //     return characteristic.writeValue(array).then(() => {
+	        //             console.log('Wake CPU write done.');
+	        // })
+	        // })
+	        // .then(() => {
+	        //         // Get robot service
+	        //         return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327")
+	        //     })
+	        // .then(service => {
+	        //         // Commands are sent to the robot service
+
+	        //     // Get Control characteristic
+	        //     return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
+	        // })
 	        // .then(characteristic => {
 	        //         console.log('> Found Control characteristic');
 	        //     // Cache the characteristic

@@ -55,11 +55,11 @@ class SpheroConnectButton extends Component {
        return service.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
            })
 
-// .then(service => {
-//         // Get TX Power characteristic
-//         console.log('service2', service)
-//         return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
-// })
+.then(service => {
+        // Get TX Power characteristic
+        console.log('service2', service)
+        return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
+})
 .then(characteristic => {
         console.log('> Found TX Power characteristic');
     let array = new Uint8Array([0x07]);
@@ -67,27 +67,27 @@ class SpheroConnectButton extends Component {
             console.log('TX Power write done.');
 })
 })
-.then(() => {
-        // Get Wake CPU characteristic
-        return service.getCharacteristic("22bb746f-2bbf-7554-2d6f-726568705327");
-})
-.then(characteristic => {
-        console.log('> Found Wake CPU characteristic');
-    let array = new Uint8Array([0x01]);
-    return characteristic.writeValue(array).then(() => {
-            console.log('Wake CPU write done.');
-})
-})
-.then(() => {
-        // Get robot service
-        return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327")
-    })
-.then(service => {
-        // Commands are sent to the robot service
+// .then(() => {
+//         // Get Wake CPU characteristic
+//         return service.getCharacteristic("22bb746f-2bbf-7554-2d6f-726568705327");
+// })
+// .then(characteristic => {
+//         console.log('> Found Wake CPU characteristic');
+//     let array = new Uint8Array([0x01]);
+//     return characteristic.writeValue(array).then(() => {
+//             console.log('Wake CPU write done.');
+// })
+// })
+// .then(() => {
+//         // Get robot service
+//         return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327")
+//     })
+// .then(service => {
+//         // Commands are sent to the robot service
 
-    // Get Control characteristic
-    return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
-})
+//     // Get Control characteristic
+//     return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
+// })
 // .then(characteristic => {
 //         console.log('> Found Control characteristic');
 //     // Cache the characteristic
