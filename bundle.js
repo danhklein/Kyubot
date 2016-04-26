@@ -19968,6 +19968,7 @@
 	          }]
 	        }).then(function (device) {
 	          console.log('> Found ' + device.name);
+	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
 	          device.connectGATT();
 	        }).then(function (server) {
