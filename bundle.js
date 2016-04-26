@@ -19904,7 +19904,7 @@
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -19934,17 +19934,32 @@
 	  }
 
 	  _createClass(SpheroConnectButton, [{
-	    key: "spheroConnect",
+	    key: 'spheroConnect',
 	    value: function spheroConnect() {
-	      console.log("One day I'll connect you to Sphero. Just watch.");
+	      document.querySelector('#connect').addEventListener('click', function () {
+
+	        // Can only send commands once device is in developer mode.
+	        // Put device into developer mode by sending a special string to Anti DOS,
+	        // 7 to TX Power and 1 to Wake CPU on radio service.
+	        navigator.bluetooth.requestDevice({
+	          filters: [{
+	            services: ['22bb746f-2bb0-7554-2d6f-726568705327']
+	          }]
+	        }).then(function (device) {
+	          console.log('> Found ' + device.name);
+	          console.log('Connecting to GATT Server...');
+	        }).catch(function (err) {
+	          console.log(err);
+	        });
+	      });
 	    }
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "button",
-	        { onClick: this.spheroConnect },
-	        "Find Sphero"
+	        'button',
+	        { id: 'connect', onClick: this.spheroConnect },
+	        'Find Sphero'
 	      );
 	    }
 	  }]);
