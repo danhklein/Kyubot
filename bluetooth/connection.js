@@ -15,9 +15,9 @@ if (controlCharacteristic == null) {
     return device.connectGATT();
 })
 .then(server => {
-        gattServer = server;
+        // gattServer = server;
     // Get radio service
-    return gattServer.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
+    return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
 })
 // .then(service => {
 //         // Developer mode sequence is sent to the radio service
