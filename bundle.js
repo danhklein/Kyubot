@@ -19942,21 +19942,81 @@
 	  function SpheroConnectButton() {
 	    _classCallCheck(this, SpheroConnectButton);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SpheroConnectButton).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SpheroConnectButton).call(this));
+
+	    _this.state = {
+	      busy: false
+	    };
+	    _this.setColor = _this.setColor.bind(_this);
+
+	    return _this;
 	  }
 
 	  _createClass(SpheroConnectButton, [{
+	    key: 'sendCommand',
+	    value: function sendCommand(did, cid, data) {
+	      // Create client command packets
+	      // API docs: https://github.com/orbotix/DeveloperResources/blob/master/docs/Sphero_API_1.50.pdf
+	      // Next sequence number
+	      var seq = sequence & 255;
+	      sequence += 1;
+	      // Start of packet #2
+	      var sop2 = 0xfc;
+	      sop2 |= 1; // Answer
+	      sop2 |= 2; // Reset timeout
+	      // Data length
+	      var dlen = data.byteLength + 1;
+	      var sum = data.reduce(function (a, b) {
+	        return a + b;
+	      });
+	      // Checksum
+	      var chk = sum + did + cid + seq + dlen & 255;
+	      chk ^= 255;
+	      var checksum = new Uint8Array([chk]);
+	      var packets = new Uint8Array([0xff, sop2, did, cid, seq, dlen]);
+	      // Append arrays: packet + data + checksum
+	      var array = new Uint8Array(packets.byteLength + data.byteLength + checksum.byteLength);
+	      array.set(packets, 0);
+	      array.set(data, packets.byteLength);
+	      array.set(checksum, packets.byteLength + data.byteLength);
+	      return controlCharacteristic.writeValue(array).then(function () {
+	        console.log('Command write done.');
+	      });
+	    }
+	  }, {
+	    key: 'setColor',
+	    value: function setColor(r, g, b) {
+	      var _this2 = this;
+
+	      console.log('Set color: r=' + r + ',g=' + g + ',b=' + b);
+	      if (this.state.busy) {
+	        // Return if another operation pending
+	        return Promise.resolve();
+	      }
+	      this.setState({ busy: true });
+	      var did = 0x02; // Virtual device ID
+	      var cid = 0x20; // Set RGB LED Output command
+	      // Color command data: red, green, blue, flag
+	      var data = new Uint8Array([r, g, b, 0]);
+	      this.sendCommand(did, cid, data).then(function () {
+	        _this2.setState({ busy: false });
+	      }).catch(function (err) {
+	        console.log(err);
+	      });
+	    }
+	  }, {
 	    key: 'spheroConnect',
 	    value: function spheroConnect() {
+	      var _this3 = this;
 
 	      var radioService = void 0;
 	      var gattServer = void 0;
-	      // let robotService;
+	      var robotService = void 0;
 	      var controlCharacteristic = void 0;
 	      var sequence = 0;
 	      var heading = 0;
-	      var busy = false;
-	      progress.hidden = true;
+	      // let busy = false;
+
 	      //   if (navigator.bluetooth == undefined) {
 	      //     document.getElementById("no-bluetooth").open();
 	      //   }
@@ -19983,7 +20043,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('AARDVARK');
+	          console.log('FLAMINGO');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
@@ -20034,15 +20094,15 @@
 	          return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327");
 	        }).then(function (service) {
 	          // Commands are sent to the robot service
-
+	          robotService = service;
 	          // Get Control characteristic
-	          return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
+	          return robotService.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
 	        }).then(function (characteristic) {
 	          console.log('> Found Control characteristic');
 	          // Cache the characteristic
 	          controlCharacteristic = characteristic;
-	          progress.hidden = true;
-	          return setColor(0, 250, 0);
+
+	          return _this3.setColor(0, 250, 0);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });

@@ -1,16 +1,75 @@
 import React, { Component } from 'react';
 
 class SpheroConnectButton extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      busy: false
+    }
+    this.setColor = this.setColor.bind(this);
+
+  }
+
+  sendCommand(did, cid, data) {
+      // Create client command packets
+      // API docs: https://github.com/orbotix/DeveloperResources/blob/master/docs/Sphero_API_1.50.pdf
+      // Next sequence number
+      let seq = sequence & 255;
+      sequence += 1
+      // Start of packet #2
+      let sop2 = 0xfc;
+      sop2 |= 1; // Answer
+      sop2 |= 2; // Reset timeout
+      // Data length
+      let dlen = data.byteLength + 1;
+      let sum = data.reduce((a, b) => {
+              return a + b;
+  });
+      // Checksum
+      let chk = (sum + did + cid + seq + dlen) & 255;
+      chk ^= 255;
+      let checksum = new Uint8Array([chk]);
+      let packets = new Uint8Array([0xff, sop2, did, cid, seq, dlen]);
+      // Append arrays: packet + data + checksum
+      let array = new Uint8Array(packets.byteLength + data.byteLength + checksum.byteLength);
+      array.set(packets, 0);
+      array.set(data, packets.byteLength);
+      array.set(checksum, packets.byteLength + data.byteLength);
+      return controlCharacteristic.writeValue(array).then(() => {
+              console.log('Command write done.');
+  });
+  }
+
+  setColor(r, g, b) {
+    console.log('Set color: r='+r+',g='+g+',b='+b);
+      if (this.state.busy) {
+          // Return if another operation pending
+          return Promise.resolve();
+      }
+      this.setState({ busy: true })
+      let did = 0x02; // Virtual device ID
+      let cid = 0x20; // Set RGB LED Output command
+      // Color command data: red, green, blue, flag
+      let data = new Uint8Array([r, g, b, 0]);
+      this.sendCommand(did, cid, data).then(() => {
+          this.setState({ busy: false });
+  })
+  .catch(function (err) {
+              console.log(err)
+            })
+  }
+
   spheroConnect() {
 
     let radioService;
     let gattServer;
-    // let robotService;
+    let robotService;
     let controlCharacteristic;
     let sequence = 0;
     let heading = 0;
-    let busy = false;
-    progress.hidden = true;
+    // let busy = false;
+
   //   if (navigator.bluetooth == undefined) {
   //     document.getElementById("no-bluetooth").open();
   //   }
@@ -39,7 +98,7 @@ class SpheroConnectButton extends Component {
               console.log('> Found ' + device.name);
              console.log('full device', device);
               console.log('Connecting to GATT Server...');
-              console.log('AARDVARK');
+              console.log('FLAMINGO');
                return device.connectGATT();
         })
         .then(server => {
@@ -99,16 +158,16 @@ class SpheroConnectButton extends Component {
     })
 .then(service => {
         // Commands are sent to the robot service
-
+        robotService = service;
     // Get Control characteristic
-    return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
+    return robotService.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
 })
 .then(characteristic => {
         console.log('> Found Control characteristic');
     // Cache the characteristic
     controlCharacteristic = characteristic;
-    progress.hidden = true;
-    return setColor(0, 250, 0);
+
+    return this.setColor(0, 250, 0);
 })
 
 
