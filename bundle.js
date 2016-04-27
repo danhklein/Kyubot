@@ -20108,7 +20108,7 @@
 	          // Cache the characteristic
 	          _this3.controlCharacteristic = characteristic;
 
-	          return _this3.setColor(0, 250, 0);
+	          return _this3.setColor(250, 0, 0);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });

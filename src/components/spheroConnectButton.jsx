@@ -174,7 +174,7 @@ class SpheroConnectButton extends Component {
     // Cache the characteristic
     this.controlCharacteristic = characteristic;
 
-    return this.setColor(0, 250, 0);
+    return this.setColor(250, 0, 0);
 })
 
 
