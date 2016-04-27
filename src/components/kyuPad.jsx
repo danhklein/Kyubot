@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RandomForm extends Component {
+class KyuPad extends Component {
   createJoystick() {
     var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
@@ -49,7 +49,7 @@ class RandomForm extends Component {
   }
 }
 
-export default RandomForm;
+export default KyuPad;
 
 //returns jsx instead of having a method on it
 // const RandomForm =()=>{
