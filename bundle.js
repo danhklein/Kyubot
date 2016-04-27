@@ -19992,7 +19992,7 @@
 	          return characteristic.writeValue(bytes).then(function () {
 	            console.log('Anti DOS write done.');
 	          });
-	        }).then(function () {
+	        }).then(function (service) {
 	          // Get TX Power characteristic
 	          console.log('service2', service);
 	          return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
