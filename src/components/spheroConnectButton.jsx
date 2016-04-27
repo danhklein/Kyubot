@@ -50,18 +50,18 @@ class SpheroConnectButton extends Component {
   }
 
   roll(speed, heading) {
-    console.log('Roll heading='+heading);
-    if (busy) {
+    console.log('Roll heading='+heading + ", speed=" + speed);
+    if (this.state.busy) {
         // Return if another operation pending
         return Promise.resolve();
     }
-    busy = true;
+   this.setState({ busy: true })
     let did = 0x02; // Virtual device ID
     let cid = 0x30; // Roll command
     // Roll command data: speed, heading (MSB), heading (LSB), state
     let data = new Uint8Array([speed, heading >> 8, heading & 0xFF, 1]);
     sendCommand(did, cid, data).then(() => {
-        busy = false;
+       this.setState({ busy: false });
     })
     .catch(function (err) {
                   console.log(err)
@@ -194,7 +194,7 @@ class SpheroConnectButton extends Component {
     // Cache the characteristic
     this.controlCharacteristic = characteristic;
 
-    return this.roll(20, 1);
+    return this.roll(20, 100);
 })
 
 

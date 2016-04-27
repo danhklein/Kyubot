@@ -19993,18 +19993,20 @@
 	  }, {
 	    key: 'roll',
 	    value: function roll(speed, heading) {
-	      console.log('Roll heading=' + heading);
-	      if (busy) {
+	      var _this2 = this;
+
+	      console.log('Roll heading=' + heading + ", speed=" + speed);
+	      if (this.state.busy) {
 	        // Return if another operation pending
 	        return Promise.resolve();
 	      }
-	      busy = true;
+	      this.setState({ busy: true });
 	      var did = 0x02; // Virtual device ID
 	      var cid = 0x30; // Roll command
 	      // Roll command data: speed, heading (MSB), heading (LSB), state
 	      var data = new Uint8Array([speed, heading >> 8, heading & 0xFF, 1]);
 	      sendCommand(did, cid, data).then(function () {
-	        busy = false;
+	        _this2.setState({ busy: false });
 	      }).catch(function (err) {
 	        console.log(err);
 	      });
@@ -20012,7 +20014,7 @@
 	  }, {
 	    key: 'setColor',
 	    value: function setColor(r, g, b) {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      console.log('Set color: r=' + r + ',g=' + g + ',b=' + b);
 	      if (this.state.busy) {
@@ -20025,7 +20027,7 @@
 	      // Color command data: red, green, blue, flag
 	      var data = new Uint8Array([r, g, b, 0]);
 	      this.sendCommand(did, cid, data).then(function () {
-	        _this2.setState({ busy: false });
+	        _this3.setState({ busy: false });
 	      }).catch(function (err) {
 	        console.log(err);
 	      });
@@ -20033,7 +20035,7 @@
 	  }, {
 	    key: 'spheroConnect',
 	    value: function spheroConnect() {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var radioService = void 0;
 	      var gattServer = void 0;
@@ -20126,9 +20128,9 @@
 	        }).then(function (characteristic) {
 	          console.log('> Found Control characteristic');
 	          // Cache the characteristic
-	          _this3.controlCharacteristic = characteristic;
+	          _this4.controlCharacteristic = characteristic;
 
-	          return _this3.roll(20, 1);
+	          return _this4.roll(20, 100);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });
