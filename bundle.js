@@ -20005,7 +20005,7 @@
 	      var cid = 0x30; // Roll command
 	      // Roll command data: speed, heading (MSB), heading (LSB), state
 	      var data = new Uint8Array([speed, heading >> 8, heading & 0xFF, 1]);
-	      sendCommand(did, cid, data).then(function () {
+	      this.sendCommand(did, cid, data).then(function () {
 	        _this2.setState({ busy: false });
 	      }).catch(function (err) {
 	        console.log(err);
@@ -20071,7 +20071,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Inch-worm');
+	          console.log('Platapus2');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;

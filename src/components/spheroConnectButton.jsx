@@ -60,7 +60,7 @@ class SpheroConnectButton extends Component {
     let cid = 0x30; // Roll command
     // Roll command data: speed, heading (MSB), heading (LSB), state
     let data = new Uint8Array([speed, heading >> 8, heading & 0xFF, 1]);
-    sendCommand(did, cid, data).then(() => {
+    this.sendCommand(did, cid, data).then(() => {
        this.setState({ busy: false });
     })
     .catch(function (err) {
@@ -125,7 +125,7 @@ class SpheroConnectButton extends Component {
               console.log('> Found ' + device.name);
              console.log('full device', device);
               console.log('Connecting to GATT Server...');
-              console.log('Inch-worm');
+              console.log('Platapus2');
                return device.connectGATT();
         })
         .then(server => {
