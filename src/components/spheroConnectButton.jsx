@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 class SpheroConnectButton extends Component {
   constructor() {
     super();
+    this.sequence = 0;
+    this.heading = 0;
+
 
     this.state = {
       busy: false
@@ -11,14 +14,15 @@ class SpheroConnectButton extends Component {
     this.sendCommand = this.sendCommand.bind(this);
     this.spheroConnect = this.spheroConnect.bind(this);
 
+
   }
 
   sendCommand(did, cid, data) {
       // Create client command packets
       // API docs: https://github.com/orbotix/DeveloperResources/blob/master/docs/Sphero_API_1.50.pdf
       // Next sequence number
-      let seq = sequence & 255;
-      sequence += 1
+      let seq = this.sequence & 255;
+      this.sequence += 1
       // Start of packet #2
       let sop2 = 0xfc;
       sop2 |= 1; // Answer
@@ -68,8 +72,8 @@ class SpheroConnectButton extends Component {
     let gattServer;
     let robotService;
     let controlCharacteristic;
-    let sequence = 0;
-    let heading = 0;
+    // let sequence = 0;
+    // let heading = 0;
     // let busy = false;
 
   //   if (navigator.bluetooth == undefined) {
@@ -100,14 +104,14 @@ class SpheroConnectButton extends Component {
               console.log('> Found ' + device.name);
              console.log('full device', device);
               console.log('Connecting to GATT Server...');
-              console.log('OSTRICH');
+              console.log('Walrus');
                return device.connectGATT();
         })
         .then(server => {
           gattServer = server;
           // Get radio service
             console.log('server', server);
-          console.log('Connected!');
+
            return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
         })
         .then(service => {

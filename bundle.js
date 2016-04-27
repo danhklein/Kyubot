@@ -19944,6 +19944,9 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SpheroConnectButton).call(this));
 
+	    _this.sequence = 0;
+	    _this.heading = 0;
+
 	    _this.state = {
 	      busy: false
 	    };
@@ -19960,8 +19963,8 @@
 	      // Create client command packets
 	      // API docs: https://github.com/orbotix/DeveloperResources/blob/master/docs/Sphero_API_1.50.pdf
 	      // Next sequence number
-	      var seq = sequence & 255;
-	      sequence += 1;
+	      var seq = this.sequence & 255;
+	      this.sequence += 1;
 	      // Start of packet #2
 	      var sop2 = 0xfc;
 	      sop2 |= 1; // Answer
@@ -20015,8 +20018,8 @@
 	      var gattServer = void 0;
 	      var robotService = void 0;
 	      var controlCharacteristic = void 0;
-	      var sequence = 0;
-	      var heading = 0;
+	      // let sequence = 0;
+	      // let heading = 0;
 	      // let busy = false;
 
 	      //   if (navigator.bluetooth == undefined) {
@@ -20045,13 +20048,13 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('OSTRICH');
+	          console.log('Walrus');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
 	          // Get radio service
 	          console.log('server', server);
-	          console.log('Connected!');
+
 	          return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
 	        }).then(function (service) {
 	          radioService = service;
