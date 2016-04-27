@@ -19952,6 +19952,7 @@
 	      busy: false
 	    };
 	    _this.setColor = _this.setColor.bind(_this);
+	    _this.roll = _this.setColor.bind(_this);
 	    _this.sendCommand = _this.sendCommand.bind(_this);
 	    _this.spheroConnect = _this.spheroConnect.bind(_this);
 
@@ -19990,6 +19991,25 @@
 	      });
 	    }
 	  }, {
+	    key: 'roll',
+	    value: function roll(speed, heading) {
+	      console.log('Roll heading=' + heading);
+	      if (busy) {
+	        // Return if another operation pending
+	        return Promise.resolve();
+	      }
+	      busy = true;
+	      var did = 0x02; // Virtual device ID
+	      var cid = 0x30; // Roll command
+	      // Roll command data: speed, heading (MSB), heading (LSB), state
+	      var data = new Uint8Array([speed, heading >> 8, heading & 0xFF, 1]);
+	      sendCommand(did, cid, data).then(function () {
+	        busy = false;
+	      }).catch(function (err) {
+	        console.log(err);
+	      });
+	    }
+	  }, {
 	    key: 'setColor',
 	    value: function setColor(r, g, b) {
 	      var _this2 = this;
@@ -20020,7 +20040,7 @@
 	      var robotService = void 0;
 
 	      // let sequence = 0;
-	      // let heading = 0;
+	      var heading = 0;
 	      // let busy = false;
 
 	      //   if (navigator.bluetooth == undefined) {
@@ -20108,7 +20128,7 @@
 	          // Cache the characteristic
 	          _this3.controlCharacteristic = characteristic;
 
-	          return _this3.setColor(250, 0, 0);
+	          return _this3.roll(20, 1);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });

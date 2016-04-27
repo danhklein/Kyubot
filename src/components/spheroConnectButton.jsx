@@ -12,6 +12,7 @@ class SpheroConnectButton extends Component {
       busy: false
     }
     this.setColor = this.setColor.bind(this);
+    this.roll = this.setColor.bind(this);
     this.sendCommand = this.sendCommand.bind(this);
     this.spheroConnect = this.spheroConnect.bind(this);
 
@@ -48,6 +49,25 @@ class SpheroConnectButton extends Component {
   });
   }
 
+  roll(speed, heading) {
+    console.log('Roll heading='+heading);
+    if (busy) {
+        // Return if another operation pending
+        return Promise.resolve();
+    }
+    busy = true;
+    let did = 0x02; // Virtual device ID
+    let cid = 0x30; // Roll command
+    // Roll command data: speed, heading (MSB), heading (LSB), state
+    let data = new Uint8Array([speed, heading >> 8, heading & 0xFF, 1]);
+    sendCommand(did, cid, data).then(() => {
+        busy = false;
+    })
+    .catch(function (err) {
+                  console.log(err)
+                })
+      }
+
   setColor(r, g, b) {
     console.log('Set color: r='+r+',g='+g+',b='+b);
       if (this.state.busy) {
@@ -74,7 +94,7 @@ class SpheroConnectButton extends Component {
     let robotService;
 
     // let sequence = 0;
-    // let heading = 0;
+    let heading = 0;
     // let busy = false;
 
   //   if (navigator.bluetooth == undefined) {
@@ -174,7 +194,7 @@ class SpheroConnectButton extends Component {
     // Cache the characteristic
     this.controlCharacteristic = characteristic;
 
-    return this.setColor(250, 0, 0);
+    return this.roll(20, 1);
 })
 
 
