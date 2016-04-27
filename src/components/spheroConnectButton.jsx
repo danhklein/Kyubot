@@ -67,7 +67,7 @@ class SpheroConnectButton extends Component {
 
 .then(() => {
         // Get TX Power characteristic
-        console.log('service2', service)
+        console.log('service2', radioService)
         return radioService.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
 })
 .then(characteristic => {
