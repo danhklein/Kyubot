@@ -4,8 +4,9 @@ class SpheroConnectButton extends Component {
   spheroConnect() {
 
     let radioService;
-  //   let robotService;
-  //   let controlCharacteristic;
+    let gattServer;
+    // let robotService;
+    let controlCharacteristic;
   //   let sequence = 0;
   //   let heading = 0;
   //   let busy = false;
@@ -16,7 +17,7 @@ class SpheroConnectButton extends Component {
   //   function handleError(error)
   //   console.log(error);
   //   progress.hidden = true;
-  //   gattServer = null;
+    // gattServer = null;
   //   radioService = null;
   //   robotService = null;
   //   controlCharacteristic = null;
@@ -38,11 +39,11 @@ class SpheroConnectButton extends Component {
               console.log('> Found ' + device.name);
              console.log('full device', device);
               console.log('Connecting to GATT Server...');
-              console.log('Giraffe2');
+              console.log('ELEPHANT');
                return device.connectGATT();
         })
         .then(server => {
-          // gattServer = server;
+          gattServer = server;
           // Get radio service
             console.log('server', server);
           console.log('Connected!');
@@ -92,23 +93,23 @@ class SpheroConnectButton extends Component {
             console.log('Wake CPU write done.');
   })
 })
-// .then(() => {
-//         // Get robot service
-//         return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327")
-//     })
-// .then(service => {
-//         // Commands are sent to the robot service
+.then(() => {
+        // Get robot service
+        return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327")
+    })
+.then(service => {
+        // Commands are sent to the robot service
 
-//     // Get Control characteristic
-//     return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
-// })
-// .then(characteristic => {
-//         console.log('> Found Control characteristic');
-//     // Cache the characteristic
-//     controlCharacteristic = characteristic;
-//     progress.hidden = true;
-//     return setColor(0, 250, 0);
-// })
+    // Get Control characteristic
+    return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
+})
+.then(characteristic => {
+        console.log('> Found Control characteristic');
+    // Cache the characteristic
+    controlCharacteristic = characteristic;
+    progress.hidden = true;
+    return setColor(0, 250, 0);
+})
 
 
             .catch(function (err) {
