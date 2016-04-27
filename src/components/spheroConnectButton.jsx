@@ -15,6 +15,7 @@ class SpheroConnectButton extends Component {
     this.roll = this.roll.bind(this);
     this.sendCommand = this.sendCommand.bind(this);
     this.spheroConnect = this.spheroConnect.bind(this);
+    // this.red;
 
 
   }
@@ -203,12 +204,24 @@ class SpheroConnectButton extends Component {
             })
     })
   }
+red() {
+  return this.setColor(255,0,0);
+  console.log("test of red")
+}
 
+blue() {
+  return this.setColor(0,0,255);
+  console.log("test of red")
+}
 
     render()
     {
       return (
+        <div>
+          <button id="red" onClick={this.red}>red</button>
+          <button id="blue" onClick={this.blue}>blue</button>
           <button id="connect" onClick={this.spheroConnect}>Find Sphero</button>
+        </div>
       );
     }
   }
