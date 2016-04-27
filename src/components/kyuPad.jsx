@@ -41,7 +41,7 @@ class KyuPad extends Component {
               buildObjects(speed, direction);
 
               
-          })
+          }, 5000)
 
         function buildObjects (speed, direction){
           var moveHistory = [];
