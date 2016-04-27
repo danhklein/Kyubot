@@ -38,6 +38,7 @@ class SpheroConnectButton extends Component {
               console.log('> Found ' + device.name);
              console.log('full device', device);
               console.log('Connecting to GATT Server...');
+              console.log('Elephant');
                return device.connectGATT();
         })
         .then(server => {
@@ -50,7 +51,9 @@ class SpheroConnectButton extends Component {
         .then(service => {
           radioService = service;
         // Developer mode sequence is sent to the radio service
+        console.log('Andy\'s radioService', radioService)
         console.log('Andy\'s service', service);
+
 
     // Get Anti DOS characteristic
        return radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");

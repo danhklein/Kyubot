@@ -19970,6 +19970,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
+	          console.log('Elephant');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          // gattServer = server;
@@ -19980,6 +19981,7 @@
 	        }).then(function (service) {
 	          radioService = service;
 	          // Developer mode sequence is sent to the radio service
+	          console.log('Andy\'s radioService', radioService);
 	          console.log('Andy\'s service', service);
 
 	          // Get Anti DOS characteristic
