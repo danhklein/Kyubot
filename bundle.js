@@ -19978,6 +19978,7 @@
 	          console.log('Connected!');
 	          return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
 	        }).then(function (service) {
+	          radioService = service;
 	          // Developer mode sequence is sent to the radio service
 	          console.log('service', service);
 
@@ -19991,11 +19992,12 @@
 	          }));
 	          return characteristic.writeValue(bytes).then(function () {
 	            console.log('Anti DOS write done.');
+	            console.log('Made it this far');
 	          });
-	        }).then(function (service) {
+	        }).then(function () {
 	          // Get TX Power characteristic
 	          console.log('service2', service);
-	          return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
+	          return radioService.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
 	        }).then(function (characteristic) {
 	          console.log('> Found TX Power characteristic', characteristic);
 	          var array = new Uint8Array([0x07]);
