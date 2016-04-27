@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import ReactDom from 'react-dom';
-import RandomForm from './components/kyuPad';
+import KyuPad from './components/kyuPad';
 import NavButtons from './components/navButtons';
 import SpheroConnectButton from './components/spheroConnectButton';
 import SavedSequences from './components/savedSequences';
@@ -15,15 +15,21 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavButtons />
-        <RandomForm />
-        <SpheroConnectButton />
-        <SavedSequences />
-        <CurrentlyHappening />
-        <CurrentBuild />
-        <PlayButtons />
-        <SaveSequence />
-        <ClearCurrent />
+        <section className="onethird">
+          <NavButtons />
+          <SpheroConnectButton />
+          <SavedSequences />
+        </section>
+        <section className="onethird">
+          <KyuPad />
+          <CurrentlyHappening />
+        </section>
+        <section className="onethird">  
+          <CurrentBuild />
+          <PlayButtons />
+          <SaveSequence />
+          <ClearCurrent />
+        </section>
       </div>
     );
   }

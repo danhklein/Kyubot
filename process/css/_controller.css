@@ -1,0 +1,8 @@
+.leftbuttons {
+  width: 90%;
+  border: 1px solid;
+  border-radius: 10px;
+  &:hover {
+    border: 3px dotted blue;
+  }
+}
