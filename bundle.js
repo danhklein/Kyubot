@@ -19948,6 +19948,8 @@
 	      busy: false
 	    };
 	    _this.setColor = _this.setColor.bind(_this);
+	    _this.sendCommand = _this.sendCommand.bind(_this);
+	    _this.spheroConnect = _this.spheroConnect.bind(_this);
 
 	    return _this;
 	  }
@@ -20007,6 +20009,7 @@
 	  }, {
 	    key: 'spheroConnect',
 	    value: function spheroConnect() {
+	      var _this3 = this;
 
 	      var radioService = void 0;
 	      var gattServer = void 0;
@@ -20042,7 +20045,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('FLAMINGO');
+	          console.log('OSTRICH');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
@@ -20101,7 +20104,7 @@
 	          // Cache the characteristic
 	          controlCharacteristic = characteristic;
 
-	          return setColor(0, 250, 0);
+	          return _this3.setColor(0, 250, 0);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });
