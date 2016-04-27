@@ -12,7 +12,7 @@ class SpheroConnectButton extends Component {
       busy: false
     }
     this.setColor = this.setColor.bind(this);
-    this.roll = this.setColor.bind(this);
+    this.roll = this.roll.bind(this);
     this.sendCommand = this.sendCommand.bind(this);
     this.spheroConnect = this.spheroConnect.bind(this);
 
@@ -125,7 +125,7 @@ class SpheroConnectButton extends Component {
               console.log('> Found ' + device.name);
              console.log('full device', device);
               console.log('Connecting to GATT Server...');
-              console.log('Walrus');
+              console.log('Inch-worm');
                return device.connectGATT();
         })
         .then(server => {

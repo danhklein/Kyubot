@@ -19952,7 +19952,7 @@
 	      busy: false
 	    };
 	    _this.setColor = _this.setColor.bind(_this);
-	    _this.roll = _this.setColor.bind(_this);
+	    _this.roll = _this.roll.bind(_this);
 	    _this.sendCommand = _this.sendCommand.bind(_this);
 	    _this.spheroConnect = _this.spheroConnect.bind(_this);
 
@@ -20069,7 +20069,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Walrus');
+	          console.log('Inch-worm');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
