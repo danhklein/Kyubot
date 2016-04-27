@@ -19980,10 +19980,10 @@
 	        }).then(function (service) {
 	          radioService = service;
 	          // Developer mode sequence is sent to the radio service
-	          console.log('service', service);
+	          console.log('Andy\'s service', service);
 
 	          // Get Anti DOS characteristic
-	          return service.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
+	          return radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
 	        }).then(function (characteristic) {
 	          console.log('> Found Anti DOS characteristic');
 	          // Send special string
