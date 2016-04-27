@@ -19946,6 +19946,7 @@
 
 	    _this.sequence = 0;
 	    _this.heading = 0;
+	    _this.controlCharacteristic;
 
 	    _this.state = {
 	      busy: false
@@ -19984,7 +19985,7 @@
 	      array.set(packets, 0);
 	      array.set(data, packets.byteLength);
 	      array.set(checksum, packets.byteLength + data.byteLength);
-	      return controlCharacteristic.writeValue(array).then(function () {
+	      return this.controlCharacteristic.writeValue(array).then(function () {
 	        console.log('Command write done.');
 	      });
 	    }
@@ -20017,7 +20018,7 @@
 	      var radioService = void 0;
 	      var gattServer = void 0;
 	      var robotService = void 0;
-	      var controlCharacteristic = void 0;
+
 	      // let sequence = 0;
 	      // let heading = 0;
 	      // let busy = false;
@@ -20105,7 +20106,7 @@
 	        }).then(function (characteristic) {
 	          console.log('> Found Control characteristic');
 	          // Cache the characteristic
-	          controlCharacteristic = characteristic;
+	          _this3.controlCharacteristic = characteristic;
 
 	          return _this3.setColor(0, 250, 0);
 	        }).catch(function (err) {
