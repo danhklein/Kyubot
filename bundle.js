@@ -19828,7 +19828,7 @@
 	        var moveObject = {};
 	        moveHistory.push({ speed: speed, direction: direction });
 	        moveObject = { speed: speed, direction: direction };
-	        console.log(moveObject);
+	        // console.log(moveObject);
 	      }
 	    }
 	  }, {
@@ -20151,13 +20151,13 @@
 	    key: 'red',
 	    value: function red() {
 	      return this.setColor(255, 0, 0);
-	      console.log("test of red");
+	      console.log("this is red");
 	    }
 	  }, {
 	    key: 'blue',
 	    value: function blue() {
 	      return this.setColor(0, 0, 255);
-	      console.log("test of red");
+	      console.log("this is red");
 	    }
 	  }, {
 	    key: 'render',
@@ -20167,12 +20167,12 @@
 	        null,
 	        _react2.default.createElement(
 	          'button',
-	          { id: 'red', onClick: this.red },
+	          { id: 'red', onClick: this.red.bind(this) },
 	          'red'
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { id: 'blue', onClick: this.blue },
+	          { id: 'blue', onClick: this.blue.bind(this) },
 	          'blue'
 	        ),
 	        _react2.default.createElement(
