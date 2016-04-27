@@ -37,7 +37,23 @@ class KyuPad extends Component {
               + (joystick.up()  ? ' up'   : '')
               + (joystick.left()  ? ' left' : '')
               + (joystick.down()  ? ' down'   : '')
-          }, 10)
+
+              buildObjects(speed, direction);
+
+              
+          })
+
+        function buildObjects (speed, direction){
+          var moveHistory = [];
+          var moveObject = {};
+          moveHistory.push({speed: speed, direction: direction});
+          moveObject = {speed: speed, direction: direction};
+          console.log(moveObject);
+
+
+
+
+      }
   }
 
    render() {
