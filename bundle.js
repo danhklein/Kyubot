@@ -122,15 +122,27 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_navButtons2.default, null),
-	        _react2.default.createElement(_kyuPad2.default, null),
-	        _react2.default.createElement(_spheroConnectButton2.default, null),
-	        _react2.default.createElement(_savedSequences2.default, null),
-	        _react2.default.createElement(_currentlyHappening2.default, null),
-	        _react2.default.createElement(_currentBuild2.default, null),
-	        _react2.default.createElement(_playButtons2.default, null),
-	        _react2.default.createElement(_saveSequenceButton2.default, null),
-	        _react2.default.createElement(_clearCurrentSequence2.default, null)
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'onethird' },
+	          _react2.default.createElement(_navButtons2.default, null),
+	          _react2.default.createElement(_spheroConnectButton2.default, null),
+	          _react2.default.createElement(_savedSequences2.default, null)
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'onethird' },
+	          _react2.default.createElement(_kyuPad2.default, null),
+	          _react2.default.createElement(_currentlyHappening2.default, null)
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'onethird' },
+	          _react2.default.createElement(_currentBuild2.default, null),
+	          _react2.default.createElement(_playButtons2.default, null),
+	          _react2.default.createElement(_saveSequenceButton2.default, null),
+	          _react2.default.createElement(_clearCurrentSequence2.default, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -19769,16 +19781,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var RandomForm = function (_Component) {
-	  _inherits(RandomForm, _Component);
+	var KyuPad = function (_Component) {
+	  _inherits(KyuPad, _Component);
 
-	  function RandomForm() {
-	    _classCallCheck(this, RandomForm);
+	  function KyuPad() {
+	    _classCallCheck(this, KyuPad);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(RandomForm).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(KyuPad).apply(this, arguments));
 	  }
 
-	  _createClass(RandomForm, [{
+	  _createClass(KyuPad, [{
 	    key: 'createJoystick',
 	    value: function createJoystick() {
 	      var scene = new THREE.Scene();
@@ -19822,10 +19834,10 @@
 	    }
 	  }]);
 
-	  return RandomForm;
+	  return KyuPad;
 	}(_react.Component);
 
-	exports.default = RandomForm;
+	exports.default = KyuPad;
 
 	//returns jsx instead of having a method on it
 	// const RandomForm =()=>{
@@ -19883,12 +19895,12 @@
 	        null,
 	        _react2.default.createElement(
 	          "button",
-	          { onClick: this.loginClick },
+	          { className: "leftbuttons", onClick: this.loginClick },
 	          "Home/Login"
 	        ),
 	        _react2.default.createElement(
 	          "button",
-	          { onClick: this.instructionsClick },
+	          { className: "leftbuttons", onClick: this.instructionsClick },
 	          "Instructions"
 	        )
 	      );
@@ -19938,8 +19950,9 @@
 	    value: function spheroConnect() {
 
 	      var radioService = void 0;
-	      //   let robotService;
-	      //   let controlCharacteristic;
+	      var gattServer = void 0;
+	      // let robotService;
+	      var controlCharacteristic = void 0;
 	      //   let sequence = 0;
 	      //   let heading = 0;
 	      //   let busy = false;
@@ -19950,7 +19963,7 @@
 	      //   function handleError(error)
 	      //   console.log(error);
 	      //   progress.hidden = true;
-	      //   gattServer = null;
+	      // gattServer = null;
 	      //   radioService = null;
 	      //   robotService = null;
 	      //   controlCharacteristic = null;
@@ -19970,10 +19983,10 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Giraffe2');
+	          console.log('ELEPHANT');
 	          return device.connectGATT();
 	        }).then(function (server) {
-	          // gattServer = server;
+	          gattServer = server;
 	          // Get radio service
 	          console.log('server', server);
 	          console.log('Connected!');
@@ -20016,26 +20029,21 @@
 	          return characteristic.writeValue(array).then(function () {
 	            console.log('Wake CPU write done.');
 	          });
-	        })
-	        // .then(() => {
-	        //         // Get robot service
-	        //         return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327")
-	        //     })
-	        // .then(service => {
-	        //         // Commands are sent to the robot service
+	        }).then(function () {
+	          // Get robot service
+	          return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327");
+	        }).then(function (service) {
+	          // Commands are sent to the robot service
 
-	        //     // Get Control characteristic
-	        //     return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
-	        // })
-	        // .then(characteristic => {
-	        //         console.log('> Found Control characteristic');
-	        //     // Cache the characteristic
-	        //     controlCharacteristic = characteristic;
-	        //     progress.hidden = true;
-	        //     return setColor(0, 250, 0);
-	        // })
-
-	        .catch(function (err) {
+	          // Get Control characteristic
+	          return service.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
+	        }).then(function (characteristic) {
+	          console.log('> Found Control characteristic');
+	          // Cache the characteristic
+	          controlCharacteristic = characteristic;
+	          progress.hidden = true;
+	          return setColor(0, 250, 0);
+	        }).catch(function (err) {
 	          console.log(err);
 	        });
 	      });
