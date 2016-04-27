@@ -20007,7 +20007,6 @@
 	  }, {
 	    key: 'spheroConnect',
 	    value: function spheroConnect() {
-	      var _this3 = this;
 
 	      var radioService = void 0;
 	      var gattServer = void 0;
@@ -20102,7 +20101,7 @@
 	          // Cache the characteristic
 	          controlCharacteristic = characteristic;
 
-	          return _this3.setColor(0, 250, 0);
+	          return setColor(0, 250, 0);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });
