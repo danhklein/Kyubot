@@ -194,7 +194,7 @@ class SpheroConnectButton extends Component {
     // Cache the characteristic
     this.controlCharacteristic = characteristic;
 
-    return this.roll(20, 100);
+    return this.roll(150, 100);
 })
 
 

@@ -20130,7 +20130,7 @@
 	          // Cache the characteristic
 	          _this4.controlCharacteristic = characteristic;
 
-	          return _this4.roll(20, 100);
+	          return _this4.roll(150, 100);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });
