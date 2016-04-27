@@ -48,7 +48,7 @@ class KyuPad extends Component {
           var moveObject = {};
           moveHistory.push({speed: speed, direction: direction});
           moveObject = {speed: speed, direction: direction};
-          console.log(moveObject);
+          // console.log(moveObject);
 
 
 
