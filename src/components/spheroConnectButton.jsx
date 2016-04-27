@@ -7,10 +7,10 @@ class SpheroConnectButton extends Component {
     let gattServer;
     // let robotService;
     let controlCharacteristic;
-  //   let sequence = 0;
-  //   let heading = 0;
-  //   let busy = false;
-  //   progress.hidden = true;
+    let sequence = 0;
+    let heading = 0;
+    let busy = false;
+    progress.hidden = true;
   //   if (navigator.bluetooth == undefined) {
   //     document.getElementById("no-bluetooth").open();
   //   }
@@ -39,7 +39,7 @@ class SpheroConnectButton extends Component {
               console.log('> Found ' + device.name);
              console.log('full device', device);
               console.log('Connecting to GATT Server...');
-              console.log('ELEPHANT');
+              console.log('AARDVARK');
                return device.connectGATT();
         })
         .then(server => {

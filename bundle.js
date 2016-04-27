@@ -19953,10 +19953,10 @@
 	      var gattServer = void 0;
 	      // let robotService;
 	      var controlCharacteristic = void 0;
-	      //   let sequence = 0;
-	      //   let heading = 0;
-	      //   let busy = false;
-	      //   progress.hidden = true;
+	      var sequence = 0;
+	      var heading = 0;
+	      var busy = false;
+	      progress.hidden = true;
 	      //   if (navigator.bluetooth == undefined) {
 	      //     document.getElementById("no-bluetooth").open();
 	      //   }
@@ -19983,7 +19983,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('ELEPHANT');
+	          console.log('AARDVARK');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
