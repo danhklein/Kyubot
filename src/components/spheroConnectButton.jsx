@@ -48,6 +48,7 @@ class SpheroConnectButton extends Component {
            return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
         })
         .then(service => {
+          radioService = service;
         // Developer mode sequence is sent to the radio service
         console.log('service', service);
 
@@ -60,13 +61,14 @@ class SpheroConnectButton extends Component {
     let bytes = new Uint8Array('011i3'.split('').map(c => c.charCodeAt()));
     return characteristic.writeValue(bytes).then(() => {
             console.log('Anti DOS write done.');
+            console.log('Made it this far');
     })
   })
 
-.then(service => {
+.then(() => {
         // Get TX Power characteristic
         console.log('service2', service)
-        return service.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
+        return radioService.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
 })
 .then(characteristic => {
         console.log('> Found TX Power characteristic', characteristic);
