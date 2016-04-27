@@ -19970,7 +19970,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Giraffe');
+	          console.log('Giraffe2');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          // gattServer = server;
