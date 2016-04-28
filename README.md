@@ -5,7 +5,7 @@ Unit 3 Team Project Creating Web Bluetooth Controller for Sphero
 
 ## Introduction
 
-Kyubot is an attempt to create a web-browser remote for the bluetooth enabled [Orbotix](https://github.com/orbotix)Sphero Robot. This is only made possible by the current work of the [BlueTooth Web Community](https://webbluetoothcg.github.io/web-bluetooth/) and [only available](http://caniuse.com/#feat=web-bluetooth) behind a development flag for Chrome devices.
+Kyubot is an attempt to create a web-browser remote for the bluetooth enabled [Orbotix](https://github.com/orbotix) Sphero Robot. This is only made possible by the current work of the [BlueTooth Web Community](https://webbluetoothcg.github.io/web-bluetooth/) and [only available](http://caniuse.com/#feat=web-bluetooth) behind a development flag for Chrome devices.
 
 In order to follow along you should have basic knowledge of Node.JS, React and read up on Bluetooth BLE and GATT.
 
