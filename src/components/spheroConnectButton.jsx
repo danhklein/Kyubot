@@ -207,16 +207,16 @@ class SpheroConnectButton extends Component {
 
 red() {
   return this.setColor(255,0,0)
-  console.log("this is red");
+
 }
 
 blue() {
   return this.setColor(0,0,255)
-  console.log("this is red");
+
 }
 rollKyu() {
   return this.roll(130,12)
-  console.log("rollll");
+
 }
 
 
