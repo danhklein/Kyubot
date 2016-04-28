@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class SpheroConnectButton extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.sequence = 0;
     this.heading = 0;
     this.controlCharacteristic;
@@ -223,6 +223,7 @@ blue() {
           <button id="red" onClick={this.red.bind(this)}>red</button>
           <button id="blue" onClick={this.blue.bind(this)}>blue</button>
           <button id="connect" onClick={this.spheroConnect}>Find Sphero</button>
+          <h1>{this.props.buildObject.speed}</h1>
         </div>
       );
     }

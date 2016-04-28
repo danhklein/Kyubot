@@ -17,14 +17,14 @@ class App extends Component {
       <div>
         <section className="onethird">
           <NavButtons />
-          <SpheroConnectButton />
+
           <SavedSequences />
         </section>
         <section className="onethird">
           <KyuPad />
           <CurrentlyHappening />
         </section>
-        <section className="onethird">  
+        <section className="onethird">
           <CurrentBuild />
           <PlayButtons />
           <SaveSequence />
