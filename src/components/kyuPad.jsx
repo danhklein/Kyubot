@@ -47,8 +47,8 @@ class KyuPad extends Component {
        let dx = Math.floor(self.joystick.deltaX());
         let dy = Math.floor(self.joystick.deltaY());
         let speed = Math.floor((Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2)))*2.45);
-        let rad = (Math.atan2(self.joystick.deltaY(),self.joystick.deltaX()));
-        let direction = (Math.floor(rad * (180 / Math.PI))) + 180;
+        let rad = (Math.atan2(self.joystick.deltaY(),self.joystick.deltaX())) + Math.PI;
+        let direction = ((Math.floor(rad * (180 / Math.PI))) + 270) % 360;
 
         let outputEl  = document.getElementById('result');
             outputEl.innerHTML  = '<b>Result:</b> '
@@ -64,7 +64,7 @@ class KyuPad extends Component {
               self.buildObjects(speed, direction);
               // console.log(self.joystick)
 
-          }, 1000);
+          }, 50);
 
 
     }

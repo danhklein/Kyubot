@@ -51,7 +51,6 @@ class SpheroConnectButton extends Component {
   }
 
   roll(speed, heading) {
-    console.log('Roll heading='+heading + ", speed=" + speed);
     if (this.state.busy) {
         // Return if another operation pending
         return Promise.resolve();
@@ -65,9 +64,17 @@ class SpheroConnectButton extends Component {
        this.setState({ busy: false });
     })
     .catch(function (err) {
-                  console.log(err)
-                })
-      }
+      console.log(err)
+    })
+  }
+
+  random() {
+    let that = this;
+    setInterval(function () {
+      that.roll(150, Math.floor(Math.random() * 360));
+      console.log(that.props)
+    }, 1200)
+  }
 
   setColor(r, g, b) {
     console.log('Set color: r='+r+',g='+g+',b='+b);
@@ -84,8 +91,25 @@ class SpheroConnectButton extends Component {
           this.setState({ busy: false });
   })
   .catch(function (err) {
-              console.log(err)
-            })
+      console.log(err)
+    })
+  }
+
+  sleep() {
+    if (this.state.busy) {
+      // Return if another operation pending
+      return Promise.resolve();
+      }
+    this.setState({ busy:true })
+    let did = 0x02;
+    let cid = 0x22;
+    this.sendCommand(did, cid).then(() => {
+      this.setState({busy: false})
+    })
+    .catch(function (err){
+      console.log(err)
+    })
+
   }
 
   spheroConnect() {
@@ -93,117 +117,94 @@ class SpheroConnectButton extends Component {
     let radioService;
     let gattServer;
     let robotService;
-
-    // let sequence = 0;
+   
     let heading = 0;
-    // let busy = false;
-
-  //   if (navigator.bluetooth == undefined) {
-  //     document.getElementById("no-bluetooth").open();
-  //   }
-  //   function handleError(error)
-  //   console.log(error);
-  //   progress.hidden = true;
-    // gattServer = null;
-  //   radioService = null;
-  //   robotService = null;
-  //   controlCharacteristic = null;
-  //   dialog.open();
-  // }
+  
 
 
-  document.querySelector('#connect').addEventListener('click', () => {
+    document.querySelector('#connect').addEventListener('click', () => {
 
 // Can only send commands once device is in developer mode.
 // Put device into developer mode by sending a special string to Anti DOS,
 // 7 to TX Power and 1 to Wake CPU on radio service.
-      navigator.bluetooth.requestDevice({
-              filters: [{
-                namePrefix: ['BB']
-              }]
-            })
-            .then(device => {
-              console.log('> Found ' + device.name);
-             console.log('full device', device);
-              console.log('Connecting to GATT Server...');
-              console.log('Cheetapotomas');
-               return device.connectGATT();
-        })
-        .then(server => {
-          gattServer = server;
-          // Get radio service
-            console.log('server', server);
+    navigator.bluetooth.requestDevice({
+      filters: [{
+        namePrefix: ['BB']
+      }]
+    })
+    .then(device => {
+      console.log('> Found ' + device.name);
+      console.log('Connecting to GATT Server...');
+      console.log('Chimera');
+      return device.connectGATT();
+    })
+    .then(server => {
+      gattServer = server;
+      // Get radio service
+      console.log('server', server);
 
-           return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
-        })
-        .then(service => {
-          radioService = service;
-        // Developer mode sequence is sent to the radio service
-        console.log('Andy\'s radioService', radioService)
-        console.log('Andy\'s service', service);
+      return server.getPrimaryService("22bb746f-2bb0-7554-2d6f-726568705327");
+    })
+    .then(service => {
+      radioService = service;
+      // Developer mode sequence is sent to the radio service
+      // Get Anti DOS characteristic
+      return radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
+    })
+    .then(characteristic => {
+          console.log('> Found Anti DOS characteristic');
+      // Send special string
+      let bytes = new Uint8Array('011i3'.split('').map(c => c.charCodeAt()));
+      return characteristic.writeValue(bytes).then(() => {
+              console.log('Anti DOS write done.');
+      })
+    })
 
+    .then(() => {
+          // Get TX Power characteristic
+      console.log('service2', radioService)
+      return radioService.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
+    })
+    .then(characteristic => {
+      console.log('> Found TX Power characteristic', characteristic);
+      let array = new Uint8Array([0x07]);
+      return characteristic.writeValue(array).then(() => {
+              console.log('TX Power write done.');
+      })
+    })
+    .then(() => {
+      // Get Wake CPU characteristic
+      return radioService.getCharacteristic("22bb746f-2bbf-7554-2d6f-726568705327");
+    })
+    .then(characteristic => {
+      console.log('> Found Wake CPU characteristic');
+      let array = new Uint8Array([0x01]);
+      return characteristic.writeValue(array).then(() => {
+        console.log('Wake CPU write done.');
+      })
+    })
+    .then(() => {
+      // Get robot service
+      return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327")
+    })
+    .then(service => {
+      // Commands are sent to the robot service
+      robotService = service;
+      // Get Control characteristic
+      return robotService.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
+    })
+    .then(characteristic => {
+      console.log('> Found Control characteristic');
+      // Cache the characteristic
+      this.controlCharacteristic = characteristic;
 
-    // Get Anti DOS characteristic
-       return radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
-           })
-.then(characteristic => {
-        console.log('> Found Anti DOS characteristic');
-    // Send special string
-    let bytes = new Uint8Array('011i3'.split('').map(c => c.charCodeAt()));
-    return characteristic.writeValue(bytes).then(() => {
-            console.log('Anti DOS write done.');
-            console.log('Made it this far');
+      return this.roll(150, 100);
+    })
+    .catch(function (err) {
+      console.log(err)
     })
   })
-
-.then(() => {
-        // Get TX Power characteristic
-        console.log('service2', radioService)
-        return radioService.getCharacteristic("22bb746f-2bb2-7554-2d6f-726568705327");
-})
-.then(characteristic => {
-        console.log('> Found TX Power characteristic', characteristic);
-    let array = new Uint8Array([0x07]);
-    console.log('arraaaaaaayyyy',array);
-    return characteristic.writeValue(array).then(() => {
-            console.log('TX Power write done.');
-  })
-})
-.then(() => {
-        // Get Wake CPU characteristic
-        return radioService.getCharacteristic("22bb746f-2bbf-7554-2d6f-726568705327");
-})
-.then(characteristic => {
-        console.log('> Found Wake CPU characteristic');
-    let array = new Uint8Array([0x01]);
-    return characteristic.writeValue(array).then(() => {
-            console.log('Wake CPU write done.');
-  })
-})
-.then(() => {
-        // Get robot service
-        return gattServer.getPrimaryService("22bb746f-2ba0-7554-2d6f-726568705327")
-    })
-.then(service => {
-        // Commands are sent to the robot service
-        robotService = service;
-    // Get Control characteristic
-    return robotService.getCharacteristic("22bb746f-2ba1-7554-2d6f-726568705327");
-})
-.then(characteristic => {
-        console.log('> Found Control characteristic');
-    // Cache the characteristic
-    this.controlCharacteristic = characteristic;
-
-    return this.roll(150, 100);
-})
-
-
-            .catch(function (err) {
-              console.log(err)
-            })
-    })
-  }
+}
 
 red() {
   return this.setColor(255,0,0)
@@ -215,11 +216,10 @@ blue() {
 
 }
 rollKyu() {
-  console.log('this thing', this.props.buildObject)
   let self = this
   setInterval(function() {
     self.roll(self.props.buildObject.speed, self.props.buildObject.direction);
-  }, 100);
+  }, 50);
 }
 
 
@@ -233,6 +233,8 @@ rollKyu() {
           <button id="blue" onClick={this.blue.bind(this)}>blue</button>
           <button id="connect" onClick={this.spheroConnect}>Find Sphero</button>
           <button id="roll" onClick={this.rollKyu.bind(this)}>Roll Meee</button>
+          <button id="random" onClick={this.random.bind(this)}>Freak Out!</button>
+
 
         </div>
       );
