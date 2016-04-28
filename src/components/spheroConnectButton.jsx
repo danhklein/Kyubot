@@ -214,6 +214,10 @@ blue() {
   return this.setColor(0,0,255)
   console.log("this is red");
 }
+rollKyu() {
+  return this.roll(130,12)
+  console.log("rollll");
+}
 
 
     render()
@@ -223,7 +227,8 @@ blue() {
           <button id="red" onClick={this.red.bind(this)}>red</button>
           <button id="blue" onClick={this.blue.bind(this)}>blue</button>
           <button id="connect" onClick={this.spheroConnect}>Find Sphero</button>
-          <h1>{this.props.buildObject.speed}</h1>
+          <button id="roll" onClick={this.rollKyu}>Roll Meee</button>
+
         </div>
       );
     }
