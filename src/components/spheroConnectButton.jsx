@@ -215,8 +215,8 @@ blue() {
 
 }
 rollKyu() {
-  return this.roll(130,12)
-
+  console.log('this thing', this.props.buildObject)
+  return this.roll(this.props.buildObject.speed,this.props.buildObject.direction)
 }
 
 
