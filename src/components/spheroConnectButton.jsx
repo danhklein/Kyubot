@@ -64,9 +64,17 @@ class SpheroConnectButton extends Component {
        this.setState({ busy: false });
     })
     .catch(function (err) {
-                  console.log(err)
-                })
-      }
+      console.log(err)
+    })
+  }
+
+  random() {
+    let that = this;
+    setInterval(function () {
+      that.roll(150, Math.floor(Math.random() * 360));
+      console.log(that.props)
+    }, 1200)
+  }
 
   setColor(r, g, b) {
     console.log('Set color: r='+r+',g='+g+',b='+b);
@@ -104,17 +112,17 @@ class SpheroConnectButton extends Component {
 
   }
 
-spheroConnect() {
+  spheroConnect() {
 
-  let radioService;
-  let gattServer;
-  let robotService;
+    let radioService;
+    let gattServer;
+    let robotService;
    
-  let heading = 0;
+    let heading = 0;
   
 
 
-  document.querySelector('#connect').addEventListener('click', () => {
+    document.querySelector('#connect').addEventListener('click', () => {
 
 // Can only send commands once device is in developer mode.
 // Put device into developer mode by sending a special string to Anti DOS,
@@ -225,6 +233,8 @@ rollKyu() {
           <button id="blue" onClick={this.blue.bind(this)}>blue</button>
           <button id="connect" onClick={this.spheroConnect}>Find Sphero</button>
           <button id="roll" onClick={this.rollKyu.bind(this)}>Roll Meee</button>
+          <button id="random" onClick={this.random.bind(this)}>Freak Out!</button>
+
 
         </div>
       );
