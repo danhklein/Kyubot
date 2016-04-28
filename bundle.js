@@ -20049,7 +20049,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('kitty');
+	          console.log('Cheetapotomas');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
@@ -20128,9 +20128,9 @@
 	    key: 'rollKyu',
 	    value: function rollKyu() {
 	      console.log('this thing', this.props.buildObject);
-	      var self = this.props.buildObject;
+	      var self = this;
 	      setInterval(function () {
-	        this.roll(self.speed, self.direction);
+	        self.roll(self.props.buildObject.speed, self.props.buildObject.direction);
 	      }, 100);
 	    }
 	  }, {

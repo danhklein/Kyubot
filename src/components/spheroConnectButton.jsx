@@ -126,7 +126,7 @@ class SpheroConnectButton extends Component {
               console.log('> Found ' + device.name);
              console.log('full device', device);
               console.log('Connecting to GATT Server...');
-              console.log('kitty');
+              console.log('Cheetapotomas');
                return device.connectGATT();
         })
         .then(server => {
@@ -216,11 +216,13 @@ blue() {
 }
 rollKyu() {
   console.log('this thing', this.props.buildObject)
-  let self = this.props.buildObject;
-  setInterval(function(){
-    this.roll(self.speed, self.direction);
+  let self = this
+  setInterval(function() {
+    self.roll(self.props.buildObject.speed, self.props.buildObject.direction);
   }, 100);
 }
+
+
 
 
     render()
