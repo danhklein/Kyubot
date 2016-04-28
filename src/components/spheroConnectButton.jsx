@@ -216,7 +216,7 @@ blue() {
 }
 rollKyu() {
   console.log('this thing', this.props.buildObject)
-  return this.roll(this.props.buildObject.speed,this.props.buildObject.direction)
+  setInterval(function(){this.roll(this.props.buildObject.speed,this.props.buildObject.direction)}, 50);
 }
 
 
