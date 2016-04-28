@@ -20046,7 +20046,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Platapus2');
+	          console.log('HYENAAA');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
@@ -20125,7 +20125,10 @@
 	    key: 'rollKyu',
 	    value: function rollKyu() {
 	      console.log('this thing', this.props.buildObject);
-	      return this.roll(this.props.buildObject.speed, this.props.buildObject.direction);
+	      setInterval(function () {
+	        console.log("roll roll roll");
+	        this.roll(this.props.buildObject.speed, this.props.buildObject.direction);
+	      }, 50);
 	    }
 	  }, {
 	    key: 'render',
