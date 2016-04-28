@@ -217,15 +217,15 @@ blue() {
 rollKyu() {
   console.log('this thing', this.props.buildObject)
   setInterval(function(){
-    console.log("roll roll roll");
-    this.roll(this.props.buildObject.speed,this.props.buildObject.direction)
+    console.log('SPEED',this.props.buildObject.speed,'DIR',this.props.buildObject.direction);
 
-  }, 50);
+  }, 1000);
 }
 
 
     render()
     {
+      console.log(this.props);
       return (
         <div>
           <button id="red" onClick={this.red.bind(this)}>red</button>

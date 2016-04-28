@@ -20126,13 +20126,13 @@
 	    value: function rollKyu() {
 	      console.log('this thing', this.props.buildObject);
 	      setInterval(function () {
-	        console.log("roll roll roll");
-	        this.roll(this.props.buildObject.speed, this.props.buildObject.direction);
-	      }, 50);
+	        console.log('SPEED', this.props.buildObject.speed, 'DIR', this.props.buildObject.direction);
+	      }, 1000);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
