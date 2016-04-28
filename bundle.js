@@ -19797,7 +19797,10 @@
 	    _this.speedDir;
 
 	    _this.state = {
-	      moveObj: {}
+	      moveObj: {
+	        speed: 120,
+	        direction: 75
+	      }
 	    };
 
 	    _this.createJoystick = _this.createJoystick.bind(_this);
@@ -19842,7 +19845,7 @@
 
 	        self.buildObjects(speed, direction);
 	        // console.log(self.joystick)
-	      }, 50);
+	      }, 1000);
 	    }
 	  }, {
 	    key: 'buildObjects',
@@ -20127,7 +20130,8 @@
 	      console.log('this thing', this.props.buildObject);
 	      setInterval(function () {
 	        console.log('SPEED', this.props.buildObject.speed, 'DIR', this.props.buildObject.direction);
-	      }, 1000);
+	        this.roll(this.props.buildObject.speed, this.props.buildObject.direction);
+	      }, 100);
 	    }
 	  }, {
 	    key: 'render',

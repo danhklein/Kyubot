@@ -9,7 +9,10 @@ class KyuPad extends Component {
     this.speedDir;
 
     this.state = {
-      moveObj: {},
+      moveObj: {
+        speed: 120,
+        direction: 75
+      },
     }
 
     this.createJoystick = this.createJoystick.bind(this);
@@ -61,7 +64,7 @@ class KyuPad extends Component {
               self.buildObjects(speed, direction);
               // console.log(self.joystick)
 
-          }, 50);
+          }, 1000);
 
 
     }

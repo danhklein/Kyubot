@@ -218,8 +218,9 @@ rollKyu() {
   console.log('this thing', this.props.buildObject)
   setInterval(function(){
     console.log('SPEED',this.props.buildObject.speed,'DIR',this.props.buildObject.direction);
+    this.roll(this.props.buildObject.speed, this.props.buildObject.direction);
 
-  }, 1000);
+  }, 100);
 }
 
 
