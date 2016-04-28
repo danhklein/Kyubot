@@ -20115,19 +20115,17 @@
 	    key: 'red',
 	    value: function red() {
 	      return this.setColor(255, 0, 0);
-	      console.log("this is red");
 	    }
 	  }, {
 	    key: 'blue',
 	    value: function blue() {
 	      return this.setColor(0, 0, 255);
-	      console.log("this is red");
 	    }
 	  }, {
 	    key: 'rollKyu',
 	    value: function rollKyu() {
-	      return this.roll(130, 12);
-	      console.log("rollll");
+	      console.log('this thing', this.props.buildObject);
+	      return this.roll(this.props.buildObject.speed, this.props.buildObject.direction);
 	    }
 	  }, {
 	    key: 'render',
