@@ -67,11 +67,11 @@
 
 	var _kyuPad2 = _interopRequireDefault(_kyuPad);
 
-	var _navButtons = __webpack_require__(161);
+	var _navButtons = __webpack_require__(162);
 
 	var _navButtons2 = _interopRequireDefault(_navButtons);
 
-	var _spheroConnectButton = __webpack_require__(162);
+	var _spheroConnectButton = __webpack_require__(161);
 
 	var _spheroConnectButton2 = _interopRequireDefault(_spheroConnectButton);
 
@@ -126,7 +126,6 @@
 	          'section',
 	          { className: 'onethird' },
 	          _react2.default.createElement(_navButtons2.default, null),
-	          _react2.default.createElement(_spheroConnectButton2.default, null),
 	          _react2.default.createElement(_savedSequences2.default, null)
 	        ),
 	        _react2.default.createElement(
@@ -19773,6 +19772,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _spheroConnectButton = __webpack_require__(161);
+
+	var _spheroConnectButton2 = _interopRequireDefault(_spheroConnectButton);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19787,16 +19790,29 @@
 	  function KyuPad() {
 	    _classCallCheck(this, KyuPad);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(KyuPad).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(KyuPad).call(this));
+
+	    _this.data = {};
+	    _this.joystick;
+	    _this.speedDir;
+
+	    _this.state = {
+	      moveObj: {}
+	    };
+
+	    _this.createJoystick = _this.createJoystick.bind(_this);
+	    _this.joystickCalc = _this.joystickCalc.bind(_this);
+	    _this.buildObjects = _this.buildObjects.bind(_this);
+
+	    _this.createJoystick();
+	    _this.joystickCalc();
+
+	    return _this;
 	  }
 
 	  _createClass(KyuPad, [{
 	    key: 'createJoystick',
 	    value: function createJoystick() {
-	      var scene = new THREE.Scene();
-	      var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-	      var clock = new THREE.Clock();
-	      var keyboard = new THREEx.KeyboardState();
 	      var joystick = new VirtualJoystick({
 	        mouseSupport: true,
 	        stationaryBase: true,
@@ -19805,41 +19821,57 @@
 	        limitStickTravel: true,
 	        stickRadius: 100
 	      });
-	      var renderer = new THREE.WebGLRenderer({ alpha: true });
-	      renderer.setClearColor(0xffffff, 1);
-	      renderer.setSize(window.innerWidth, window.innerHeight);
-	      document.body.appendChild(renderer.domElement);
+
+	      this.joystick = joystick;
+	      this.speedDir = joystick;
+	    }
+	  }, {
+	    key: 'joystickCalc',
+	    value: function joystickCalc() {
+	      var self = this;
 
 	      setInterval(function () {
-	        var dx = Math.floor(joystick.deltaX());
-	        var dy = Math.floor(joystick.deltaY());
-	        var speed = Math.floor(Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2)));
-	        var rad = Math.atan2(joystick.deltaY(), joystick.deltaX());
+	        var dx = Math.floor(self.joystick.deltaX());
+	        var dy = Math.floor(self.joystick.deltaY());
+	        var speed = Math.floor(Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2)) * 2.45);
+	        var rad = Math.atan2(self.joystick.deltaY(), self.joystick.deltaX());
 	        var direction = Math.floor(rad * (180 / Math.PI)) + 180;
 
 	        var outputEl = document.getElementById('result');
-	        outputEl.innerHTML = '<b>Result:</b> ' + ' dx: ' + dx + ' dy: ' + dy + ' speed: ' + speed + ' direction: ' + direction + (joystick.right() ? ' right' : '') + (joystick.up() ? ' up' : '') + (joystick.left() ? ' left' : '') + (joystick.down() ? ' down' : '');
+	        outputEl.innerHTML = '<b>Result:</b> ' + ' dx: ' + dx + ' dy: ' + dy + ' speed: ' + speed + ' direction: ' + direction + (self.joystick.right() ? ' right' : '') + (self.joystick.up() ? ' up' : '') + (self.joystick.left() ? ' left' : '') + (self.joystick.down() ? ' down' : '');
 
-	        buildObjects(speed, direction);
-	      }, 5000);
+	        self.buildObjects(speed, direction);
+	        // console.log(self.joystick)
+	      }, 50);
+	    }
+	  }, {
+	    key: 'buildObjects',
+	    value: function buildObjects(speed, direction) {
+	      var moveHistory = [];
+	      // let moveObject = {};
+	      moveHistory.push({ speed: speed, direction: direction });
+	      var moveObject = { speed: speed, direction: direction };
 
-	      function buildObjects(speed, direction) {
-	        var moveHistory = [];
-	        var moveObject = {};
-	        moveHistory.push({ speed: speed, direction: direction });
-	        moveObject = { speed: speed, direction: direction };
-	        // console.log(moveObject);
-	      }
+	      this.setState({
+	        moveObj: moveObject
+	      });
+
+	      return moveObject;
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      this.createJoystick();
 	      // setTimeout(this.displaySpeed(), 1000);
+	      // console.log(this.speedDir)
 	      return _react2.default.createElement(
 	        'div',
-	        { id: 'result' },
-	        'Something'
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'result' },
+	          'Something'
+	        ),
+	        _react2.default.createElement(_spheroConnectButton2.default, { buildObject: this.state.moveObj })
 	      );
 	    }
 	  }]);
@@ -19856,74 +19888,6 @@
 
 /***/ },
 /* 161 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var NavButtons = function (_Component) {
-	  _inherits(NavButtons, _Component);
-
-	  function NavButtons() {
-	    _classCallCheck(this, NavButtons);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NavButtons).apply(this, arguments));
-	  }
-
-	  _createClass(NavButtons, [{
-	    key: "loginClick",
-	    value: function loginClick() {
-	      console.log("You can't login now, but you will be able to.");
-	    }
-	  }, {
-	    key: "instructionsClick",
-	    value: function instructionsClick() {
-	      console.log("eventually you'll be able to read instructions too.");
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        null,
-	        _react2.default.createElement(
-	          "button",
-	          { className: "leftbuttons", onClick: this.loginClick },
-	          "Home/Login"
-	        ),
-	        _react2.default.createElement(
-	          "button",
-	          { className: "leftbuttons", onClick: this.instructionsClick },
-	          "Instructions"
-	        )
-	      );
-	    }
-	  }]);
-
-	  return NavButtons;
-	}(_react.Component);
-
-	exports.default = NavButtons;
-
-/***/ },
-/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19949,10 +19913,10 @@
 	var SpheroConnectButton = function (_Component) {
 	  _inherits(SpheroConnectButton, _Component);
 
-	  function SpheroConnectButton() {
+	  function SpheroConnectButton(props) {
 	    _classCallCheck(this, SpheroConnectButton);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SpheroConnectButton).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SpheroConnectButton).call(this, props));
 
 	    _this.sequence = 0;
 	    _this.heading = 0;
@@ -20160,6 +20124,12 @@
 	      console.log("this is red");
 	    }
 	  }, {
+	    key: 'rollKyu',
+	    value: function rollKyu() {
+	      return this.roll(130, 12);
+	      console.log("rollll");
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -20179,6 +20149,11 @@
 	          'button',
 	          { id: 'connect', onClick: this.spheroConnect },
 	          'Find Sphero'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { id: 'roll', onClick: this.rollKyu },
+	          'Roll Meee'
 	        )
 	      );
 	    }
@@ -20188,6 +20163,74 @@
 	}(_react.Component);
 
 	exports.default = SpheroConnectButton;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NavButtons = function (_Component) {
+	  _inherits(NavButtons, _Component);
+
+	  function NavButtons() {
+	    _classCallCheck(this, NavButtons);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NavButtons).apply(this, arguments));
+	  }
+
+	  _createClass(NavButtons, [{
+	    key: "loginClick",
+	    value: function loginClick() {
+	      console.log("You can't login now, but you will be able to.");
+	    }
+	  }, {
+	    key: "instructionsClick",
+	    value: function instructionsClick() {
+	      console.log("eventually you'll be able to read instructions too.");
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "button",
+	          { className: "leftbuttons", onClick: this.loginClick },
+	          "Home/Login"
+	        ),
+	        _react2.default.createElement(
+	          "button",
+	          { className: "leftbuttons", onClick: this.instructionsClick },
+	          "Instructions"
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NavButtons;
+	}(_react.Component);
+
+	exports.default = NavButtons;
 
 /***/ },
 /* 163 */
