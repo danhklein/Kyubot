@@ -229,13 +229,11 @@ rollKyu() {
     {
       return (
         <div>
-          <button id="red" onClick={this.red.bind(this)}>red</button>
-          <button id="blue" onClick={this.blue.bind(this)}>blue</button>
-          <button id="connect" onClick={this.spheroConnect}>Find Sphero</button>
-          <button id="roll" onClick={this.rollKyu.bind(this)}>Roll Meee</button>
-          <button id="random" onClick={this.random.bind(this)}>Freak Out!</button>
-
-
+          <button className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
+          <button className="round-button round-red" onClick={this.red.bind(this)}></button>
+          <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
+          <button className="round-button round-green" onClick={this.rollKyu.bind(this)}>ROLL</button>
+          <button className="round-button random" onClick={this.random.bind(this)}>FREAK</button>
         </div>
       );
     }

@@ -30,7 +30,7 @@ class KyuPad extends Component {
         mouseSupport  : true,
         stationaryBase  : true,
         baseX   : 600,
-        baseY   : 300,
+        baseY   : 220,
         limitStickTravel: true,
         stickRadius: 100
       });
@@ -51,11 +51,9 @@ class KyuPad extends Component {
         let direction = ((Math.floor(rad * (180 / Math.PI))) + 270) % 360;
 
         let outputEl  = document.getElementById('result');
-            outputEl.innerHTML  = '<b>Result:</b> '
-              + ' dx: '+dx
-              + ' dy: '+dy
-              + ' speed: '+speed
-              + ' direction: '+direction
+            outputEl.innerHTML  = ''
+              + ' <b>speed:</b> '+speed
+              + '<br> <b>direction:</b> '+direction
               + (self.joystick.right() ? ' right'  : '')
               + (self.joystick.up()  ? ' up'   : '')
               + (self.joystick.left()  ? ' left' : '')
@@ -88,7 +86,6 @@ class KyuPad extends Component {
     // console.log(this.speedDir)
     return (
       <div>
-        <div id="result">Something</div>
         <SpheroConnectButton buildObject={ this.state.moveObj } />
       </div>
       );

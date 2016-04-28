@@ -12,7 +12,6 @@ class NavButtons extends Component {
   render() {
     return (
       <div>
-        <button className="leftbuttons" onClick={this.loginClick}>Home/Login</button>
         <button className="leftbuttons" onClick={this.instructionsClick}>Instructions</button>
       </div>
       );

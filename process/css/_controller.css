@@ -1,8 +1,81 @@
 .leftbuttons {
   width: 90%;
   border: 1px solid;
+  font-size: 2rem;
+  height: 75px;
   border-radius: 10px;
+  box-shadow: $color-box-shadow;
+  border: $color-border;
+  color: $color-button;
+  background-color: #5bb75b;
   &:hover {
     border: 3px dotted blue;
   }
 }
+
+.round-button {
+    display: $color-button-display;
+    width: $color-button-width;
+    height: $color-button-height;
+    line-height: $color-button-line-height;
+    border-radius: $color-button-border-radius;
+    text-align: $color-button-text-align;
+    text-decoration: $color-text-decoration;
+    color: $color-button;
+    box-shadow: $color-box-shadow;
+    font-size: $color-font-size;
+    font-weight: $color-font-weight;
+    float: left;
+    margin-right: 10px;
+    margin-top:7px;
+    border: $color-border;
+       &:hover {
+    background: #262626;
+  }
+}
+
+.round-red {
+   background-color: #FF0000;
+}
+
+.round-blue {
+   background-color: #0000FF;
+}
+
+.round-green {
+   background-color: #00FF00;
+}
+
+/*boxes*/
+
+.box {
+border: $box-border;
+border-radius: $box-radius;
+box-shadow: $color-box-shadow;
+background-color: $box-background-color;
+padding: $box-padding;
+text-align: center;
+width: 90%;
+}
+
+.saved {
+  height: 100px;
+  margin-top: 15px;
+}
+
+#result {
+  margin-top: 225px;
+  border: $box-border;
+  border-radius: $box-radius;
+  box-shadow: $color-box-shadow;
+  background-color: $box-background-color;
+  padding: $box-padding;
+  text-align: center;
+  width: 90%;
+}
+
+
+
+
+
+
