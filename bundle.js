@@ -20128,9 +20128,9 @@
 	    key: 'rollKyu',
 	    value: function rollKyu() {
 	      console.log('this thing', this.props.buildObject);
+	      var self = this.props.buildObject;
 	      setInterval(function () {
-	        console.log('SPEED', this.props.buildObject.speed, 'DIR', this.props.buildObject.direction);
-	        this.roll(120, 75);
+	        this.roll(self.speed, self.direction);
 	      }, 100);
 	    }
 	  }, {
