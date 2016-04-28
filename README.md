@@ -1,7 +1,7 @@
 
 [Play here!](http://danhklein.github.io/Kyubot)
 
-# Kyubot
+
 Unit 3 Team Project Creating Web Bluetooth Controller for Sphero
 
 # Kyubot!
