@@ -1,3 +1,6 @@
+
+[Play here!](http://danhklein.github.io/Kyubot)
+
 # Kyubot
 Unit 3 Team Project Creating Web Bluetooth Controller for Sphero
 
@@ -15,6 +18,8 @@ Currently in order to send commands to a BLE device through the Web Bluetooth AP
 
 Copy and Paste this into your browser and enable the highlighted flag for 'Web Bluetooth'.
 >chrome://flags/#enable-web-bluetooth
+
+Restart your browser.
 
 Is your Bluetooth off? Turn on your Bluetooth. 
 
