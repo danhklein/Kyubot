@@ -19819,7 +19819,17 @@
 
 	        var outputEl = document.getElementById('result');
 	        outputEl.innerHTML = '<b>Result:</b> ' + ' dx: ' + dx + ' dy: ' + dy + ' speed: ' + speed + ' direction: ' + direction + (joystick.right() ? ' right' : '') + (joystick.up() ? ' up' : '') + (joystick.left() ? ' left' : '') + (joystick.down() ? ' down' : '');
-	      }, 10);
+
+	        buildObjects(speed, direction);
+	      }, 5000);
+
+	      function buildObjects(speed, direction) {
+	        var moveHistory = [];
+	        var moveObject = {};
+	        moveHistory.push({ speed: speed, direction: direction });
+	        moveObject = { speed: speed, direction: direction };
+	        // console.log(moveObject);
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -19955,6 +19965,7 @@
 	    _this.roll = _this.roll.bind(_this);
 	    _this.sendCommand = _this.sendCommand.bind(_this);
 	    _this.spheroConnect = _this.spheroConnect.bind(_this);
+	    // this.red;
 
 	    return _this;
 	  }
@@ -20137,12 +20148,38 @@
 	      });
 	    }
 	  }, {
+	    key: 'red',
+	    value: function red() {
+	      return this.setColor(255, 0, 0);
+	      console.log("this is red");
+	    }
+	  }, {
+	    key: 'blue',
+	    value: function blue() {
+	      return this.setColor(0, 0, 255);
+	      console.log("this is red");
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'button',
-	        { id: 'connect', onClick: this.spheroConnect },
-	        'Find Sphero'
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'button',
+	          { id: 'red', onClick: this.red.bind(this) },
+	          'red'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { id: 'blue', onClick: this.blue.bind(this) },
+	          'blue'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { id: 'connect', onClick: this.spheroConnect },
+	          'Find Sphero'
+	        )
 	      );
 	    }
 	  }]);

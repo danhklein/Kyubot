@@ -14,6 +14,7 @@ function setColor(r, g, b) {
 })
 .catch(handleError);
 }
+
 function roll(speed, heading) {
     console.log('Roll heading='+heading);
     if (busy) {
@@ -29,6 +30,8 @@ function roll(speed, heading) {
         busy = false;
 })
 .catch(handleError);
-}/**
+}
+
+/**
  * Created by danielklein on 4/26/16.
  */
