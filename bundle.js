@@ -20049,7 +20049,7 @@
 	          console.log('> Found ' + device.name);
 	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('rabbit');
+	          console.log('kitty');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
