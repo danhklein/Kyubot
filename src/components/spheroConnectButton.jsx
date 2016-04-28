@@ -51,7 +51,6 @@ class SpheroConnectButton extends Component {
   }
 
   roll(speed, heading) {
-    console.log('Roll heading='+heading + ", speed=" + speed);
     if (this.state.busy) {
         // Return if another operation pending
         return Promise.resolve();
@@ -215,11 +214,10 @@ blue() {
 
 }
 rollKyu() {
-  console.log('this thing', this.props.buildObject)
   let self = this
   setInterval(function() {
     self.roll(self.props.buildObject.speed, self.props.buildObject.direction);
-  }, 100);
+  }, 50);
 }
 
 
