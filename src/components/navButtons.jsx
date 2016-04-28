@@ -12,7 +12,7 @@ class NavButtons extends Component {
   render() {
     return (
       <div>
-        <button className="bright" onClick={this.instructionsClick}>Instructions</button>
+        <button className="leftbuttons" onClick={this.instructionsClick}>Instructions</button>
       </div>
       );
   }

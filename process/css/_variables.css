@@ -34,4 +34,13 @@ $color-button-font-weight:bold;
 $color-button: #f5f5f5;
 $color-border: 2px solid #f5f5f5;
 
+/*Boxes*/
+
+$box-border: 2px solid grey;
+$box-radius: 5px;
+$box-background-color: #efefef;
+$box-padding: 8px;
+
+
+
 

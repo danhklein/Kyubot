@@ -229,11 +229,10 @@ rollKyu() {
     {
       return (
         <div>
+          <button className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
           <button className="round-button round-red" onClick={this.red.bind(this)}></button>
           <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
-          <button id="connect" onClick={this.spheroConnect}>Find Sphero</button>
           <button className="round-button round-green" onClick={this.rollKyu.bind(this)}>ROLL</button>
-
         </div>
       );
     }

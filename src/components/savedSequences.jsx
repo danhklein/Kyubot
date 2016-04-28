@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 const SavedSequences = () => {
   return (
-    <h1>You can find sequences you've saved in me!</h1>
+    <div className="box saved">
+      <h4>Saved Sequences</h4>
+    </div>
     );
 }
 

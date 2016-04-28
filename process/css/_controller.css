@@ -1,7 +1,13 @@
 .leftbuttons {
   width: 90%;
   border: 1px solid;
+  font-size: 2rem;
+  height: 75px;
   border-radius: 10px;
+  box-shadow: $color-box-shadow;
+  border: $color-border;
+  color: $color-button;
+  background-color: #5bb75b;
   &:hover {
     border: 3px dotted blue;
   }
@@ -19,6 +25,9 @@
     box-shadow: $color-box-shadow;
     font-size: $color-font-size;
     font-weight: $color-font-weight;
+    float: left;
+    margin-right: 10px;
+    margin-top:7px;
     border: $color-border;
        &:hover {
     background: #262626;
@@ -27,22 +36,46 @@
 
 .round-red {
    background-color: #FF0000;
-   float: left;
-   margin-right: 10px;
 }
 
 .round-blue {
    background-color: #0000FF;
-   float: left;
-   margin-right: 10px;
 }
 
 .round-green {
    background-color: #00FF00;
-   float: left;
-   margin-right: 10px;
-
 }
+
+/*boxes*/
+
+.box {
+border: $box-border;
+border-radius: $box-radius;
+box-shadow: $color-box-shadow;
+background-color: $box-background-color;
+padding: $box-padding;
+text-align: center;
+width: 90%;
+}
+
+.saved {
+  height: 100px;
+  margin-top: 15px;
+}
+
+#result {
+  margin-top: 225px;
+  border: $box-border;
+  border-radius: $box-radius;
+  box-shadow: $color-box-shadow;
+  background-color: $box-background-color;
+  padding: $box-padding;
+  text-align: center;
+  width: 90%;
+}
+
+
+
 
 
 
