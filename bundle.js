@@ -20152,7 +20152,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { id: 'roll', onClick: this.rollKyu },
+	          { id: 'roll', onClick: this.rollKyu.bind(this) },
 	          'Roll Meee'
 	        )
 	      );
