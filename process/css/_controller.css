@@ -6,3 +6,43 @@
     border: 3px dotted blue;
   }
 }
+
+.round-button {
+    display: $color-button-display;
+    width: $color-button-width;
+    height: $color-button-height;
+    line-height: $color-button-line-height;
+    border-radius: $color-button-border-radius;
+    text-align: $color-button-text-align;
+    text-decoration: $color-text-decoration;
+    color: $color-button;
+    box-shadow: $color-box-shadow;
+    font-size: $color-font-size;
+    font-weight: $color-font-weight;
+    border: $color-border;
+       &:hover {
+    background: #262626;
+  }
+}
+
+.round-red {
+   background-color: #FF0000;
+   float: left;
+   margin-right: 10px;
+}
+
+.round-blue {
+   background-color: #0000FF;
+   float: left;
+   margin-right: 10px;
+}
+
+.round-green {
+   background-color: #00FF00;
+   float: left;
+   margin-right: 10px;
+
+}
+
+
+

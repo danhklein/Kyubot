@@ -7,7 +7,6 @@ import SpheroConnectButton from './components/spheroConnectButton';
 import SavedSequences from './components/savedSequences';
 import CurrentlyHappening from './components/currentlyHappening';
 import CurrentBuild from './components/currentBuild';
-import PlayButtons from './components/playButtons';
 import SaveSequence from './components/saveSequenceButton';
 import ClearCurrent from './components/clearCurrentSequence';
 
@@ -17,7 +16,6 @@ class App extends Component {
       <div>
         <section className="onethird">
           <NavButtons />
-
           <SavedSequences />
         </section>
         <section className="onethird">
@@ -26,7 +24,6 @@ class App extends Component {
         </section>
         <section className="onethird">
           <CurrentBuild />
-          <PlayButtons />
           <SaveSequence />
           <ClearCurrent />
         </section>

@@ -18,3 +18,20 @@ $large: screen and (min-width: 1200px);
 
 $container-default-width: 80%;
 $container-max-width: 1200px;
+
+/*color buttons*/
+
+$color-button-display:block;
+$color-button-width: 50px;
+$color-button-height: 50px;
+$color-button-line-height:50px;
+$color-button-border-radius: 50%;
+$color-button-text-align:center;
+$color-button-text-decoration:none;
+$color-button-box-shadow: 0 0 3px gray;
+$color-button-font-size:20px;
+$color-button-font-weight:bold;
+$color-button: #f5f5f5;
+$color-border: 2px solid #f5f5f5;
+
+
