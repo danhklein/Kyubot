@@ -51,7 +51,7 @@ class KyuPad extends Component {
         let direction = ((Math.floor(rad * (180 / Math.PI))) + 270) % 360;
 
         let outputEl  = document.getElementById('result');
-            outputEl.innerHTML  = '<b>Result:</b><br> '
+            outputEl.innerHTML  = ''
               + ' <b>speed:</b> '+speed
               + '<br> <b>direction:</b> '+direction
               + (self.joystick.right() ? ' right'  : '')
