@@ -20130,13 +20130,12 @@
 	      console.log('this thing', this.props.buildObject);
 	      setInterval(function () {
 	        console.log('SPEED', this.props.buildObject.speed, 'DIR', this.props.buildObject.direction);
-	        this.roll(this.props.buildObject.speed, this.props.buildObject.direction);
+	        this.roll(120, 75);
 	      }, 100);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,

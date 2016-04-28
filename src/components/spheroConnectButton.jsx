@@ -218,7 +218,7 @@ rollKyu() {
   console.log('this thing', this.props.buildObject)
   setInterval(function(){
     console.log('SPEED',this.props.buildObject.speed,'DIR',this.props.buildObject.direction);
-    this.roll(this.props.buildObject.speed, this.props.buildObject.direction);
+    this.roll(120, 75);
 
   }, 100);
 }
@@ -226,7 +226,6 @@ rollKyu() {
 
     render()
     {
-      console.log(this.props);
       return (
         <div>
           <button id="red" onClick={this.red.bind(this)}>red</button>
