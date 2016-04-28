@@ -11,9 +11,12 @@ In order to follow along you should have basic knowledge of Node.JS, React and r
 
 ## Set up
 
-Copy and Paste into your browser and enable the highlighted flag for 'Web Bluetooth'
+Currently in order to send commands to a BLE device through the Web Bluetooth API you will require a device running chrome OS.
+
+Copy and Paste this into your browser and enable the highlighted flag for 'Web Bluetooth'.
 >chrome://flags/#enable-web-bluetooth
 
+Is your Bluetooth off? Turn on your Bluetooth. 
 
 ##Links:
 -[Sphero Developer Portal](https://developer.gosphero.com/)
