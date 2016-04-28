@@ -19837,15 +19837,15 @@
 	        var dx = Math.floor(self.joystick.deltaX());
 	        var dy = Math.floor(self.joystick.deltaY());
 	        var speed = Math.floor(Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2)) * 2.45);
-	        var rad = Math.atan2(self.joystick.deltaY(), self.joystick.deltaX());
-	        var direction = Math.floor(rad * (180 / Math.PI)) + 180;
+	        var rad = Math.atan2(self.joystick.deltaY(), self.joystick.deltaX()) + Math.PI;
+	        var direction = (Math.floor(rad * (180 / Math.PI)) + 270) % 360;
 
 	        var outputEl = document.getElementById('result');
 	        outputEl.innerHTML = '<b>Result:</b> ' + ' dx: ' + dx + ' dy: ' + dy + ' speed: ' + speed + ' direction: ' + direction + (self.joystick.right() ? ' right' : '') + (self.joystick.up() ? ' up' : '') + (self.joystick.left() ? ' left' : '') + (self.joystick.down() ? ' down' : '');
 
 	        self.buildObjects(speed, direction);
 	        // console.log(self.joystick)
-	      }, 1000);
+	      }, 50);
 	    }
 	  }, {
 	    key: 'buildObjects',
@@ -19973,7 +19973,6 @@
 	    value: function roll(speed, heading) {
 	      var _this2 = this;
 
-	      console.log('Roll heading=' + heading + ", speed=" + speed);
 	      if (this.state.busy) {
 	        // Return if another operation pending
 	        return Promise.resolve();
@@ -19988,6 +19987,15 @@
 	      }).catch(function (err) {
 	        console.log(err);
 	      });
+	    }
+	  }, {
+	    key: 'random',
+	    value: function random() {
+	      var that = this;
+	      setInterval(function () {
+	        that.roll(150, Math.floor(Math.random() * 360));
+	        console.log(that.props);
+	      }, 1200);
 	    }
 	  }, {
 	    key: 'setColor',
@@ -20011,30 +20019,33 @@
 	      });
 	    }
 	  }, {
+	    key: 'sleep',
+	    value: function sleep() {
+	      var _this4 = this;
+
+	      if (this.state.busy) {
+	        // Return if another operation pending
+	        return Promise.resolve();
+	      }
+	      this.setState({ busy: true });
+	      var did = 0x02;
+	      var cid = 0x22;
+	      this.sendCommand(did, cid).then(function () {
+	        _this4.setState({ busy: false });
+	      }).catch(function (err) {
+	        console.log(err);
+	      });
+	    }
+	  }, {
 	    key: 'spheroConnect',
 	    value: function spheroConnect() {
-	      var _this4 = this;
+	      var _this5 = this;
 
 	      var radioService = void 0;
 	      var gattServer = void 0;
 	      var robotService = void 0;
 
-	      // let sequence = 0;
 	      var heading = 0;
-	      // let busy = false;
-
-	      //   if (navigator.bluetooth == undefined) {
-	      //     document.getElementById("no-bluetooth").open();
-	      //   }
-	      //   function handleError(error)
-	      //   console.log(error);
-	      //   progress.hidden = true;
-	      // gattServer = null;
-	      //   radioService = null;
-	      //   robotService = null;
-	      //   controlCharacteristic = null;
-	      //   dialog.open();
-	      // }
 
 	      document.querySelector('#connect').addEventListener('click', function () {
 
@@ -20047,9 +20058,8 @@
 	          }]
 	        }).then(function (device) {
 	          console.log('> Found ' + device.name);
-	          console.log('full device', device);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Cheetapotomas');
+	          console.log('Chimera');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
@@ -20060,9 +20070,6 @@
 	        }).then(function (service) {
 	          radioService = service;
 	          // Developer mode sequence is sent to the radio service
-	          console.log('Andy\'s radioService', radioService);
-	          console.log('Andy\'s service', service);
-
 	          // Get Anti DOS characteristic
 	          return radioService.getCharacteristic("22bb746f-2bbd-7554-2d6f-726568705327");
 	        }).then(function (characteristic) {
@@ -20073,7 +20080,6 @@
 	          }));
 	          return characteristic.writeValue(bytes).then(function () {
 	            console.log('Anti DOS write done.');
-	            console.log('Made it this far');
 	          });
 	        }).then(function () {
 	          // Get TX Power characteristic
@@ -20082,7 +20088,6 @@
 	        }).then(function (characteristic) {
 	          console.log('> Found TX Power characteristic', characteristic);
 	          var array = new Uint8Array([0x07]);
-	          console.log('arraaaaaaayyyy', array);
 	          return characteristic.writeValue(array).then(function () {
 	            console.log('TX Power write done.');
 	          });
@@ -20106,9 +20111,9 @@
 	        }).then(function (characteristic) {
 	          console.log('> Found Control characteristic');
 	          // Cache the characteristic
-	          _this4.controlCharacteristic = characteristic;
+	          _this5.controlCharacteristic = characteristic;
 
-	          return _this4.roll(150, 100);
+	          return _this5.roll(150, 100);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });
@@ -20127,11 +20132,10 @@
 	  }, {
 	    key: 'rollKyu',
 	    value: function rollKyu() {
-	      console.log('this thing', this.props.buildObject);
 	      var self = this;
 	      setInterval(function () {
 	        self.roll(self.props.buildObject.speed, self.props.buildObject.direction);
-	      }, 100);
+	      }, 50);
 	    }
 	  }, {
 	    key: 'render',
@@ -20158,6 +20162,11 @@
 	          'button',
 	          { id: 'roll', onClick: this.rollKyu.bind(this) },
 	          'Roll Meee'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { id: 'random', onClick: this.random.bind(this) },
+	          'Freak Out!'
 	        )
 	      );
 	    }
