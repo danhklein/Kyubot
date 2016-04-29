@@ -19930,6 +19930,7 @@
 	    _this.roll = _this.roll.bind(_this);
 	    _this.sendCommand = _this.sendCommand.bind(_this);
 	    _this.spheroConnect = _this.spheroConnect.bind(_this);
+	    _this.randomColors = _this.randomColors.bind(_this);
 
 	    return _this;
 	  }
@@ -20150,6 +20151,22 @@
 	      this.sleep();
 	    }
 	  }, {
+	    key: 'randomColors',
+	    value: function randomColors() {
+	      var self = this;
+	      var colors = ["(255,0,0)", "(255,128,0)", "(255,255,0)", "(51,255,255)", "(0,255,0)", "(0,0,255)", "255,51,153"];
+	      var curr = "";
+	      function change() {
+	        var length = colors.length;
+	        var rand = Math.floor(Math.random() * (length - 1)) + 1;
+	        curr = colors[rand];
+	      }
+	      setInterval(function () {
+	        change();
+	        self.setColor(curr);
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -20164,6 +20181,11 @@
 	          'button',
 	          { className: 'sleepbutton', onClick: this.sleep },
 	          'Sleep'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'leftbuttons', onClick: this.randomColors },
+	          'Random Colors'
 	        ),
 	        _react2.default.createElement(
 	          'div',
