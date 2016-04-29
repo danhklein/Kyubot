@@ -20164,7 +20164,7 @@
 	      setInterval(function () {
 	        change();
 	        self.setColor(curr[0], curr[1], curr[2]);
-	      });
+	      }, 1000);
 	    }
 	  }, {
 	    key: 'render',
