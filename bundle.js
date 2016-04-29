@@ -20056,7 +20056,7 @@
 	        }).then(function (device) {
 	          console.log('> Found ' + device.name);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Hydra');
+	          console.log('Jiminy cricket ');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
@@ -20157,12 +20157,12 @@
 	        null,
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'leftbuttons', onClick: this.clickStart.bind(this) },
+	          { className: 'leftbuttons', onClick: this.spheroConnect },
 	          'Find Sphero'
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'sleepbutton', onClick: this.clickStop.bind(this) },
+	          { className: 'sleepbutton', onClick: this.sleep },
 	          'Sleep'
 	        ),
 	        _react2.default.createElement(
