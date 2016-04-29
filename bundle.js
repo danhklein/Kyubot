@@ -87,15 +87,11 @@
 
 	var _currentBuild2 = _interopRequireDefault(_currentBuild);
 
-	var _playButtons = __webpack_require__(166);
-
-	var _playButtons2 = _interopRequireDefault(_playButtons);
-
-	var _saveSequenceButton = __webpack_require__(167);
+	var _saveSequenceButton = __webpack_require__(166);
 
 	var _saveSequenceButton2 = _interopRequireDefault(_saveSequenceButton);
 
-	var _clearCurrentSequence = __webpack_require__(168);
+	var _clearCurrentSequence = __webpack_require__(167);
 
 	var _clearCurrentSequence2 = _interopRequireDefault(_clearCurrentSequence);
 
@@ -138,7 +134,6 @@
 	          'section',
 	          { className: 'onethird' },
 	          _react2.default.createElement(_currentBuild2.default, null),
-	          _react2.default.createElement(_playButtons2.default, null),
 	          _react2.default.createElement(_saveSequenceButton2.default, null),
 	          _react2.default.createElement(_clearCurrentSequence2.default, null)
 	        )
@@ -19807,20 +19802,25 @@
 	    _this.joystickCalc = _this.joystickCalc.bind(_this);
 	    _this.buildObjects = _this.buildObjects.bind(_this);
 
-	    _this.createJoystick();
+	    // this.createJoystick();
 	    _this.joystickCalc();
 
 	    return _this;
 	  }
 
 	  _createClass(KyuPad, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.createJoystick();
+	    }
+	  }, {
 	    key: 'createJoystick',
 	    value: function createJoystick() {
 	      var joystick = new VirtualJoystick({
+	        container: document.getElementById('kyubot'),
 	        mouseSupport: true,
-	        stationaryBase: true,
-	        baseX: 600,
-	        baseY: 300,
+	        baseX: -300,
+	        baseY: -300,
 	        limitStickTravel: true,
 	        stickRadius: 100
 	      });
@@ -19841,7 +19841,7 @@
 	        var direction = (Math.floor(rad * (180 / Math.PI)) + 270) % 360;
 
 	        var outputEl = document.getElementById('result');
-	        outputEl.innerHTML = '<b>Result:</b> ' + ' dx: ' + dx + ' dy: ' + dy + ' speed: ' + speed + ' direction: ' + direction + (self.joystick.right() ? ' right' : '') + (self.joystick.up() ? ' up' : '') + (self.joystick.left() ? ' left' : '') + (self.joystick.down() ? ' down' : '');
+	        outputEl.innerHTML = '' + ' <b>speed:</b> ' + speed + '<br> <b>direction:</b> ' + direction + (self.joystick.right() ? ' right' : '') + (self.joystick.up() ? ' up' : '') + (self.joystick.left() ? ' left' : '') + (self.joystick.down() ? ' down' : '');
 
 	        self.buildObjects(speed, direction);
 	        // console.log(self.joystick)
@@ -19864,16 +19864,12 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+
 	      // setTimeout(this.displaySpeed(), 1000);
 	      // console.log(this.speedDir)
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'result' },
-	          'Something'
-	        ),
 	        _react2.default.createElement(_spheroConnectButton2.default, { buildObject: this.state.moveObj })
 	      );
 	    }
@@ -19926,13 +19922,14 @@
 	    _this.controlCharacteristic;
 
 	    _this.state = {
-	      busy: false
+	      busy: false,
+	      sleep: false
 	    };
+	    _this.toggle = _this.toggle.bind(_this);
 	    _this.setColor = _this.setColor.bind(_this);
 	    _this.roll = _this.roll.bind(_this);
 	    _this.sendCommand = _this.sendCommand.bind(_this);
 	    _this.spheroConnect = _this.spheroConnect.bind(_this);
-	    // this.red;
 
 	    return _this;
 	  }
@@ -20138,35 +20135,48 @@
 	      }, 50);
 	    }
 	  }, {
+	    key: 'toggle',
+	    value: function toggle() {
+	      this.setState({ sleep: !this.state.sleep });
+	    }
+	  }, {
+	    key: 'clickStart',
+	    value: function clickStart() {
+	      this.toggle();
+	      this.spheroConnect();
+	    }
+	  }, {
+	    key: 'clickStop',
+	    value: function clickStop() {
+	      this.toggle();
+	      this.sleep();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
+	        !this.state.sleep ? _react2.default.createElement(
 	          'button',
-	          { id: 'red', onClick: this.red.bind(this) },
-	          'red'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { id: 'blue', onClick: this.blue.bind(this) },
-	          'blue'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { id: 'connect', onClick: this.spheroConnect },
+	          { className: 'leftbuttons', onClick: this.clickStart.bind(this) },
 	          'Find Sphero'
+	        ) : _react2.default.createElement(
+	          'button',
+	          { className: 'sleepbutton', onClick: this.clickStop.bind(this) },
+	          'Sleep'
+	        ),
+	        _react2.default.createElement('button', { className: 'round-button round-red', onClick: this.red.bind(this) }),
+	        _react2.default.createElement('button', { className: 'round-button round-blue', onClick: this.blue.bind(this) }),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'round-button round-green', onClick: this.rollKyu.bind(this) },
+	          'ROLL'
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { id: 'roll', onClick: this.rollKyu.bind(this) },
-	          'Roll Meee'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { id: 'random', onClick: this.random.bind(this) },
-	          'Freak Out!'
+	          { className: 'round-button random', onClick: this.random.bind(this) },
+	          'FREAK'
 	        )
 	      );
 	    }
@@ -20228,11 +20238,6 @@
 	        null,
 	        _react2.default.createElement(
 	          "button",
-	          { className: "leftbuttons", onClick: this.loginClick },
-	          "Home/Login"
-	        ),
-	        _react2.default.createElement(
-	          "button",
 	          { className: "leftbuttons", onClick: this.instructionsClick },
 	          "Instructions"
 	        )
@@ -20249,7 +20254,7 @@
 /* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -20263,9 +20268,13 @@
 
 	var SavedSequences = function SavedSequences() {
 	  return _react2.default.createElement(
-	    'h1',
-	    null,
-	    'You can find sequences you\'ve saved in me!'
+	    "div",
+	    { className: "box saved" },
+	    _react2.default.createElement(
+	      "h4",
+	      null,
+	      "Saved Sequences"
+	    )
 	  );
 	};
 
@@ -20273,58 +20282,6 @@
 
 /***/ },
 /* 164 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var CurrentlyHappening = function CurrentlyHappening() {
-	  return _react2.default.createElement(
-	    'h1',
-	    null,
-	    'I\'ll be able to tell you what\'s currently happening!'
-	  );
-	};
-
-	exports.default = CurrentlyHappening;
-
-/***/ },
-/* 165 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var CurrentBuild = function CurrentBuild() {
-	  return _react2.default.createElement(
-	    'h1',
-	    null,
-	    'I\'ll show you the current sequence.'
-	  );
-	};
-
-	exports.default = CurrentBuild;
-
-/***/ },
-/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20347,34 +20304,25 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var PlayButtons = function (_Component) {
-	  _inherits(PlayButtons, _Component);
+	var CurrentlyHappening = function (_Component) {
+	  _inherits(CurrentlyHappening, _Component);
 
-	  function PlayButtons() {
-	    _classCallCheck(this, PlayButtons);
+	  function CurrentlyHappening() {
+	    _classCallCheck(this, CurrentlyHappening);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(PlayButtons).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CurrentlyHappening).call(this));
+
+	    _this.state = {
+	      showStart: false
+	    };
+	    _this.toggle = _this.toggle.bind(_this);
+	    return _this;
 	  }
 
-	  _createClass(PlayButtons, [{
-	    key: "play",
-	    value: function play() {
-	      console.log("I'll play your current sequence from the start");
-	    }
-	  }, {
-	    key: "record",
-	    value: function record() {
-	      console.log("When you push me, you'll be able to record your sequences");
-	    }
-	  }, {
-	    key: "pause",
-	    value: function pause() {
-	      console.log("Hypothetically I'll pause the recorded movements, but we'll see.");
-	    }
-	  }, {
-	    key: "stop",
-	    value: function stop() {
-	      console.log("I'll stop your recording. Then you can save me or whatever you want to do.");
+	  _createClass(CurrentlyHappening, [{
+	    key: "toggle",
+	    value: function toggle() {
+	      this.setState({ showStart: !this.state.showStart });
 	    }
 	  }, {
 	    key: "render",
@@ -20382,37 +20330,45 @@
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(
-	          "button",
-	          { onClick: this.play },
-	          "Play from Beginning"
-	        ),
-	        _react2.default.createElement(
-	          "button",
-	          { onClick: this.record },
-	          "Record"
-	        ),
-	        _react2.default.createElement(
-	          "button",
-	          { onClick: this.pause },
-	          "Pause"
-	        ),
-	        _react2.default.createElement(
-	          "button",
-	          { onClick: this.stop },
-	          "Stop"
-	        )
+	        _react2.default.createElement("div", { id: "kyubot" }),
+	        _react2.default.createElement("div", { id: "result" })
 	      );
 	    }
 	  }]);
 
-	  return PlayButtons;
+	  return CurrentlyHappening;
 	}(_react.Component);
 
-	exports.default = PlayButtons;
+	exports.default = CurrentlyHappening;
 
 /***/ },
-/* 167 */
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var CurrentBuild = function CurrentBuild() {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "box current" },
+	    "I'll show you the current sequence."
+	  );
+	};
+
+	exports.default = CurrentBuild;
+
+/***/ },
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20466,7 +20422,7 @@
 	exports.default = SaveSequence;
 
 /***/ },
-/* 168 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
