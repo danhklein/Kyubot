@@ -19802,7 +19802,6 @@
 	    _this.joystickCalc = _this.joystickCalc.bind(_this);
 	    _this.buildObjects = _this.buildObjects.bind(_this);
 
-	    // this.createJoystick();
 	    _this.joystickCalc();
 
 	    return _this;
@@ -19819,8 +19818,6 @@
 	      var joystick = new VirtualJoystick({
 	        container: document.getElementById('kyubot'),
 	        mouseSupport: true,
-	        baseX: -300,
-	        baseY: -300,
 	        limitStickTravel: true,
 	        stickRadius: 100
 	      });
@@ -19838,20 +19835,18 @@
 	        var dy = Math.floor(self.joystick.deltaY());
 	        var speed = Math.floor(Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2)) * 2.45);
 	        var rad = Math.atan2(self.joystick.deltaY(), self.joystick.deltaX()) + Math.PI;
-	        var direction = (Math.floor(rad * (180 / Math.PI)) + 270) % 360;
+	        var direction = (Math.floor(rad * (180 / Math.PI)) + 90) % 360;
 
 	        var outputEl = document.getElementById('result');
 	        outputEl.innerHTML = '' + ' <b>speed:</b> ' + speed + '<br> <b>direction:</b> ' + direction + (self.joystick.right() ? ' right' : '') + (self.joystick.up() ? ' up' : '') + (self.joystick.left() ? ' left' : '') + (self.joystick.down() ? ' down' : '');
 
 	        self.buildObjects(speed, direction);
-	        // console.log(self.joystick)
 	      }, 50);
 	    }
 	  }, {
 	    key: 'buildObjects',
 	    value: function buildObjects(speed, direction) {
 	      var moveHistory = [];
-	      // let moveObject = {};
 	      moveHistory.push({ speed: speed, direction: direction });
 	      var moveObject = { speed: speed, direction: direction };
 
@@ -19864,9 +19859,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-
-	      // setTimeout(this.displaySpeed(), 1000);
-	      // console.log(this.speedDir)
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -19879,11 +19871,6 @@
 	}(_react.Component);
 
 	exports.default = KyuPad;
-
-	//returns jsx instead of having a method on it
-	// const RandomForm =()=>{
-
-	// }
 
 /***/ },
 /* 161 */
