@@ -12,7 +12,6 @@ class SpheroConnectButton extends Component {
       busy: false,
       sleep: false
     }
-    this.toggle = this.toggle.bind(this);
     this.setColor = this.setColor.bind(this);
     this.roll = this.roll.bind(this);
     this.sendCommand = this.sendCommand.bind(this);
@@ -223,18 +222,6 @@ rollKyu() {
   }, 50);
 }
 
-  toggle() {
-    this.setState ({sleep: !this.state.sleep})
-  }
-
-  clickStart() {
-    this.spheroConnect();
-  }
-
-  clickStop() {
-    this.sleep();
-  }
-
   randomColors() {
     let self = this;
     let colors = [[255,0,0], [255,128,0], [255,255,0], [51,255,255],[0,255,0],[0,0,255],[255,51,153]];
@@ -255,7 +242,6 @@ rollKyu() {
       return (
         <div>
            <button id="connect" className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
-           <button className="sleepbutton" onClick={this.sleep}>Sleep</button>
            <button className="leftbuttons" onClick={this.rollKyu.bind(this)}>Click to Roll  (then click Start)</button>
           <div className ="centerbuttons">
             <button className="round-button round-red" onClick={this.red.bind(this)}>RED</button>
