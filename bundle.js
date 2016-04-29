@@ -119,23 +119,32 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(
-	          'section',
-	          { className: 'onethird' },
-	          _react2.default.createElement(_navButtons2.default, null),
-	          _react2.default.createElement(_savedSequences2.default, null)
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement('img', { src: 'images/kyu-1.png' })
 	        ),
 	        _react2.default.createElement(
-	          'section',
-	          { className: 'onethird' },
-	          _react2.default.createElement(_kyuPad2.default, null),
-	          _react2.default.createElement(_currentlyHappening2.default, null)
-	        ),
-	        _react2.default.createElement(
-	          'section',
-	          { className: 'onethird' },
-	          _react2.default.createElement(_currentBuild2.default, null),
-	          _react2.default.createElement(_saveSequenceButton2.default, null),
-	          _react2.default.createElement(_clearCurrentSequence2.default, null)
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'onethird' },
+	            _react2.default.createElement(_navButtons2.default, null),
+	            _react2.default.createElement(_savedSequences2.default, null)
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'onethird' },
+	            _react2.default.createElement(_kyuPad2.default, null),
+	            _react2.default.createElement(_currentlyHappening2.default, null)
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'onethird' },
+	            _react2.default.createElement(_currentBuild2.default, null),
+	            _react2.default.createElement(_saveSequenceButton2.default, null),
+	            _react2.default.createElement(_clearCurrentSequence2.default, null)
+	          )
 	        )
 	      );
 	    }
@@ -19912,7 +19921,6 @@
 	      busy: false,
 	      sleep: false
 	    };
-	    _this.toggle = _this.toggle.bind(_this);
 	    _this.setColor = _this.setColor.bind(_this);
 	    _this.roll = _this.roll.bind(_this);
 	    _this.sendCommand = _this.sendCommand.bind(_this);
@@ -20004,27 +20012,9 @@
 	      });
 	    }
 	  }, {
-	    key: 'sleep',
-	    value: function sleep() {
-	      var _this4 = this;
-
-	      if (this.state.busy) {
-	        // Return if another operation pending
-	        return Promise.resolve();
-	      }
-	      this.setState({ busy: true });
-	      var did = 0x02;
-	      var cid = 0x22;
-	      this.sendCommand(did, cid).then(function () {
-	        _this4.setState({ busy: false });
-	      }).catch(function (err) {
-	        console.log(err);
-	      });
-	    }
-	  }, {
 	    key: 'spheroConnect',
 	    value: function spheroConnect() {
-	      var _this5 = this;
+	      var _this4 = this;
 
 	      var radioService = void 0;
 	      var gattServer = void 0;
@@ -20096,9 +20086,9 @@
 	        }).then(function (characteristic) {
 	          console.log('> Found Control characteristic');
 	          // Cache the characteristic
-	          _this5.controlCharacteristic = characteristic;
+	          _this4.controlCharacteristic = characteristic;
 
-	          return _this5.roll(150, 100);
+	          return _this4.roll(150, 100);
 	        }).catch(function (err) {
 	          console.log(err);
 	        });
@@ -20121,21 +20111,6 @@
 	      setInterval(function () {
 	        self.roll(self.props.buildObject.speed, self.props.buildObject.direction);
 	      }, 50);
-	    }
-	  }, {
-	    key: 'toggle',
-	    value: function toggle() {
-	      this.setState({ sleep: !this.state.sleep });
-	    }
-	  }, {
-	    key: 'clickStart',
-	    value: function clickStart() {
-	      this.spheroConnect();
-	    }
-	  }, {
-	    key: 'clickStop',
-	    value: function clickStop() {
-	      this.sleep();
 	    }
 	  }, {
 	    key: 'randomColors',
@@ -20166,8 +20141,8 @@
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'sleepbutton', onClick: this.sleep },
-	          'Sleep'
+	          { className: 'leftbuttons', onClick: this.rollKyu.bind(this) },
+	          'Click to Roll  (then click Start)'
 	        ),
 	        _react2.default.createElement(
 	          'button',
@@ -20177,16 +20152,24 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'centerbuttons' },
-	          _react2.default.createElement('button', { className: 'round-button round-red', onClick: this.red.bind(this) }),
-	          _react2.default.createElement('button', { className: 'round-button round-blue', onClick: this.blue.bind(this) }),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'round-button round-green', onClick: this.rollKyu.bind(this) },
-	            'ROLL'
+	            { className: 'round-button round-red', onClick: this.red.bind(this) },
+	            'RED'
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: 'round-button random', onClick: this.random.bind(this) },
+	            { className: 'round-button round-blue', onClick: this.blue.bind(this) },
+	            'BLUE'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'round-button round-green', onClick: this.randomColors },
+	            'BLINK'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'round-button round-purple', onClick: this.random.bind(this) },
 	            'FREAK'
 	          )
 	        )
@@ -20348,7 +20331,7 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "clickhere" },
-	            "Click Here to Start!"
+	            "Start"
 	          )
 	        ),
 	        _react2.default.createElement("div", { id: "result" })

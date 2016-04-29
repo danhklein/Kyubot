@@ -12,7 +12,6 @@ class SpheroConnectButton extends Component {
       busy: false,
       sleep: false
     }
-    this.toggle = this.toggle.bind(this);
     this.setColor = this.setColor.bind(this);
     this.roll = this.roll.bind(this);
     this.sendCommand = this.sendCommand.bind(this);
@@ -94,23 +93,6 @@ class SpheroConnectButton extends Component {
   .catch(function (err) {
       console.log(err)
     })
-  }
-
-  sleep() {
-    if (this.state.busy) {
-      // Return if another operation pending
-      return Promise.resolve();
-      }
-    this.setState({ busy:true })
-    let did = 0x02;
-    let cid = 0x22;
-    this.sendCommand(did, cid).then(() => {
-      this.setState({busy: false})
-    })
-    .catch(function (err){
-      console.log(err)
-    })
-
   }
 
   spheroConnect() {
@@ -223,18 +205,6 @@ rollKyu() {
   }, 50);
 }
 
-  toggle() {
-    this.setState ({sleep: !this.state.sleep})
-  }
-
-  clickStart() {
-    this.spheroConnect();
-  }
-
-  clickStop() {
-    this.sleep();
-  }
-
   randomColors() {
     let self = this;
     let colors = [[255,0,0], [255,128,0], [255,255,0], [51,255,255],[0,255,0],[0,0,255],[255,51,153]];
@@ -255,13 +225,15 @@ rollKyu() {
       return (
         <div>
            <button id="connect" className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
-           <button className="sleepbutton" onClick={this.sleep}>Sleep</button>
+
+           <button className="leftbuttons" onClick={this.rollKyu.bind(this)}>Click to Roll  (then click Start)</button>
            <button className="leftbuttons" onClick={this.randomColors}>Random Colors</button>
+
           <div className ="centerbuttons">
-            <button className="round-button round-red" onClick={this.red.bind(this)}></button>
-            <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
-            <button className="round-button round-green" onClick={this.rollKyu.bind(this)}>ROLL</button>
-            <button className="round-button random" onClick={this.random.bind(this)}>FREAK</button>
+            <button className="round-button round-red" onClick={this.red.bind(this)}>RED</button>
+            <button className="round-button round-blue" onClick={this.blue.bind(this)}>BLUE</button>
+            <button className="round-button round-green"  onClick={this.randomColors}>BLINK</button>
+            <button className="round-button round-purple" onClick={this.random.bind(this)}>FREAK</button>
           </div>
         </div>
       );
