@@ -19,7 +19,9 @@ toggle() {
 render () {
   return (
     <div>      
-      <div id="kyubot"></div>
+      <div id="kyubot">
+        <div className ="clickhere">Click Here to Start!</div>
+      </div>
       <div id="result"></div>
     </div>
   );
