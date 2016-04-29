@@ -4,12 +4,25 @@
   font-size: 2rem;
   height: 75px;
   border-radius: 10px;
-  box-shadow: $color-box-shadow;
   border: $color-border;
   color: $color-button;
-  background-color: #5bb75b;
+  background-color: $go;
   &:hover {
-    border: 3px dotted blue;
+    border: 1px solid grey;
+  }
+}
+
+.sleepbutton {
+  width: 90%;
+  border: 1px solid;
+  font-size: 2rem;
+  height: 75px;
+  border-radius: 10px;
+  border: $color-border;
+  color: $color-button;
+  background-color: $stop;
+  &:hover {
+    border: 1px solid grey;
   }
 }
 
@@ -61,10 +74,11 @@ width: 90%;
 .saved {
   height: 100px;
   margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 #result {
-  margin-top: 225px;
+  margin-top: 20px;
   border: $box-border;
   border-radius: $box-radius;
   box-shadow: $color-box-shadow;
@@ -74,6 +88,18 @@ width: 90%;
   width: 90%;
 }
 
+#kyubot, #clickme {
+  margin-top: 25px;
+  border: $box-border;
+  border-radius: $box-radius;
+  box-shadow: $color-box-shadow;
+  background-color: $box-background-color;
+  padding: $box-padding;
+  text-align: center;
+  width: 90%;
+  height: 200px;
+  clear:both;
+}
 
 
 

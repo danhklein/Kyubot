@@ -9,14 +9,14 @@ class SpheroConnectButton extends Component {
 
 
     this.state = {
-      busy: false
+      busy: false,
+      sleep: false
     }
+    this.toggle = this.toggle.bind(this);
     this.setColor = this.setColor.bind(this);
     this.roll = this.roll.bind(this);
     this.sendCommand = this.sendCommand.bind(this);
     this.spheroConnect = this.spheroConnect.bind(this);
-    // this.red;
-
 
   }
 
@@ -222,14 +222,26 @@ rollKyu() {
   }, 50);
 }
 
+  toggle() {
+    this.setState ({sleep: !this.state.sleep})
+  }
 
+  clickStart() {
+    this.toggle();
+    this.spheroConnect();
+  }
+
+  clickStop() {
+    this.toggle();
+    this.sleep();
+  }
 
 
     render()
     {
       return (
         <div>
-          <button className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
+          {!this.state.sleep ? <button className="leftbuttons" onClick={this.clickStart.bind(this)}>Find Sphero</button> : <button className="sleepbutton" onClick={this.clickStop.bind(this)}>Sleep</button> }
           <button className="round-button round-red" onClick={this.red.bind(this)}></button>
           <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
           <button className="round-button round-green" onClick={this.rollKyu.bind(this)}>ROLL</button>

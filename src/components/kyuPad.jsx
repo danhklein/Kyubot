@@ -19,18 +19,22 @@ class KyuPad extends Component {
     this.joystickCalc = this.joystickCalc.bind(this);
     this.buildObjects = this.buildObjects.bind(this);
 
-    this.createJoystick();
+    // this.createJoystick();
     this.joystickCalc();
 
+  }
+
+  componentDidMount() {
+    this.createJoystick();
   }
 
 
   createJoystick() {
       const joystick = new VirtualJoystick({
+        container: document.getElementById('kyubot'),
         mouseSupport  : true,
-        stationaryBase  : true,
-        baseX   : 600,
-        baseY   : 220,
+        baseX: -300,
+        baseY: -300,
         limitStickTravel: true,
         stickRadius: 100
       });
@@ -82,11 +86,12 @@ class KyuPad extends Component {
 
 
    render() {
+    
     // setTimeout(this.displaySpeed(), 1000);
     // console.log(this.speedDir)
     return (
       <div>
-        <SpheroConnectButton buildObject={ this.state.moveObj } />
+          <SpheroConnectButton buildObject={ this.state.moveObj } />
       </div>
       );
   }
