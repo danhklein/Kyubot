@@ -135,7 +135,7 @@ class SpheroConnectButton extends Component {
     .then(device => {
       console.log('> Found ' + device.name);
       console.log('Connecting to GATT Server...');
-      console.log('Chimera');
+      console.log('Hydra');
       return device.connectGATT();
     })
     .then(server => {
@@ -227,12 +227,10 @@ rollKyu() {
   }
 
   clickStart() {
-    this.toggle();
     this.spheroConnect();
   }
 
   clickStop() {
-    this.toggle();
     this.sleep();
   }
 
@@ -241,11 +239,14 @@ rollKyu() {
     {
       return (
         <div>
-          {!this.state.sleep ? <button className="leftbuttons" onClick={this.clickStart.bind(this)}>Find Sphero</button> : <button className="sleepbutton" onClick={this.clickStop.bind(this)}>Sleep</button> }
-          <button className="round-button round-red" onClick={this.red.bind(this)}></button>
-          <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
-          <button className="round-button round-green" onClick={this.rollKyu.bind(this)}>ROLL</button>
-          <button className="round-button random" onClick={this.random.bind(this)}>FREAK</button>
+           <button className="leftbuttons" onClick={this.clickStart.bind(this)}>Find Sphero</button>
+           <button className="sleepbutton" onClick={this.clickStop.bind(this)}>Sleep</button> 
+          <div className ="centerbuttons">
+            <button className="round-button round-red" onClick={this.red.bind(this)}></button>
+            <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
+            <button className="round-button round-green" onClick={this.rollKyu.bind(this)}>ROLL</button>
+            <button className="round-button random" onClick={this.random.bind(this)}>FREAK</button>
+          </div>
         </div>
       );
     }
