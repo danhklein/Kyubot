@@ -20056,7 +20056,7 @@
 	        }).then(function (device) {
 	          console.log('> Found ' + device.name);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Chimera');
+	          console.log('Hydra');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
@@ -20142,13 +20142,11 @@
 	  }, {
 	    key: 'clickStart',
 	    value: function clickStart() {
-	      this.toggle();
 	      this.spheroConnect();
 	    }
 	  }, {
 	    key: 'clickStop',
 	    value: function clickStop() {
-	      this.toggle();
 	      this.sleep();
 	    }
 	  }, {
@@ -20157,26 +20155,31 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        !this.state.sleep ? _react2.default.createElement(
+	        _react2.default.createElement(
 	          'button',
 	          { className: 'leftbuttons', onClick: this.clickStart.bind(this) },
 	          'Find Sphero'
-	        ) : _react2.default.createElement(
+	        ),
+	        _react2.default.createElement(
 	          'button',
 	          { className: 'sleepbutton', onClick: this.clickStop.bind(this) },
 	          'Sleep'
 	        ),
-	        _react2.default.createElement('button', { className: 'round-button round-red', onClick: this.red.bind(this) }),
-	        _react2.default.createElement('button', { className: 'round-button round-blue', onClick: this.blue.bind(this) }),
 	        _react2.default.createElement(
-	          'button',
-	          { className: 'round-button round-green', onClick: this.rollKyu.bind(this) },
-	          'ROLL'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'round-button random', onClick: this.random.bind(this) },
-	          'FREAK'
+	          'div',
+	          { className: 'centerbuttons' },
+	          _react2.default.createElement('button', { className: 'round-button round-red', onClick: this.red.bind(this) }),
+	          _react2.default.createElement('button', { className: 'round-button round-blue', onClick: this.blue.bind(this) }),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'round-button round-green', onClick: this.rollKyu.bind(this) },
+	            'ROLL'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'round-button random', onClick: this.random.bind(this) },
+	            'FREAK'
+	          )
 	        )
 	      );
 	    }
@@ -20330,7 +20333,15 @@
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement("div", { id: "kyubot" }),
+	        _react2.default.createElement(
+	          "div",
+	          { id: "kyubot" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "clickhere" },
+	            "Click Here to Start!"
+	          )
+	        ),
 	        _react2.default.createElement("div", { id: "result" })
 	      );
 	    }
