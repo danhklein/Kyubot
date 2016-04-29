@@ -117,9 +117,9 @@ class SpheroConnectButton extends Component {
     let radioService;
     let gattServer;
     let robotService;
-   
+
     let heading = 0;
-  
+
 
 
     document.querySelector('#connect').addEventListener('click', () => {
@@ -135,7 +135,7 @@ class SpheroConnectButton extends Component {
     .then(device => {
       console.log('> Found ' + device.name);
       console.log('Connecting to GATT Server...');
-      console.log('Hydra');
+      console.log('Jiminy cricket ');
       return device.connectGATT();
     })
     .then(server => {
@@ -239,8 +239,8 @@ rollKyu() {
     {
       return (
         <div>
-           <button className="leftbuttons" onClick={this.clickStart.bind(this)}>Find Sphero</button>
-           <button className="sleepbutton" onClick={this.clickStop.bind(this)}>Sleep</button> 
+           <button className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
+           <button className="sleepbutton" onClick={this.sleep}>Sleep</button>
           <div className ="centerbuttons">
             <button className="round-button round-red" onClick={this.red.bind(this)}></button>
             <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
