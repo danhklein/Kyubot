@@ -136,7 +136,7 @@ class SpheroConnectButton extends Component {
     .then(device => {
       console.log('> Found ' + device.name);
       console.log('Connecting to GATT Server...');
-      console.log('spinach');
+      console.log('Zebra');
       return device.connectGATT();
     })
     .then(server => {
@@ -237,7 +237,7 @@ rollKyu() {
 
   randomColors() {
     let self = this;
-    let colors = ["(255,0,0)", "(255,128,0)", "(255,255,0)", "(51,255,255)","(0,255,0)","(0,0,255)","255,51,153"];
+    let colors = [[255,0,0], [255,128,0], [255,255,0], [51,255,255],[0,255,0],[0,0,255],[255,51,153]];
     let curr = "";
     function change() {
       let length = colors.length;
@@ -246,7 +246,7 @@ rollKyu() {
     }
     setInterval(function() {
       change();
-      self.setColor(curr);
+      self.setColor(curr[0], curr[1], curr[2]);
     })
     }
 

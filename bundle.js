@@ -20057,7 +20057,7 @@
 	        }).then(function (device) {
 	          console.log('> Found ' + device.name);
 	          console.log('Connecting to GATT Server...');
-	          console.log('spinach');
+	          console.log('Zebra');
 	          return device.connectGATT();
 	        }).then(function (server) {
 	          gattServer = server;
@@ -20154,7 +20154,7 @@
 	    key: 'randomColors',
 	    value: function randomColors() {
 	      var self = this;
-	      var colors = ["(255,0,0)", "(255,128,0)", "(255,255,0)", "(51,255,255)", "(0,255,0)", "(0,0,255)", "255,51,153"];
+	      var colors = [[255, 0, 0], [255, 128, 0], [255, 255, 0], [51, 255, 255], [0, 255, 0], [0, 0, 255], [255, 51, 153]];
 	      var curr = "";
 	      function change() {
 	        var length = colors.length;
@@ -20163,7 +20163,7 @@
 	      }
 	      setInterval(function () {
 	        change();
-	        self.setColor(curr);
+	        self.setColor(curr[0], curr[1], curr[2]);
 	      });
 	    }
 	  }, {
