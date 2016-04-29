@@ -41,6 +41,7 @@
     float: left;
     margin-right: 10px;
     margin-top:7px;
+    margin-bottom: 7px;
     border: $color-border;
        &:hover {
     background: #262626;
@@ -94,14 +95,27 @@ width: 90%;
   border-radius: $box-radius;
   box-shadow: $color-box-shadow;
   background-color: $box-background-color;
-  padding: $box-padding;
+/*  padding: $box-padding;*/
+  padding: 70px;
   text-align: center;
   width: 90%;
   height: 200px;
   clear:both;
 }
 
+.clickhere {
+  left:0; 
+  right:0;
+  margin-top:100px; 
+  bottom:0;
+  margin:auto;
+  max-width:100%;
+  max-height:100%;
+  color: #c6c6c6;
+}
 
-
+.centerbuttons {
+  
+}
 
 
