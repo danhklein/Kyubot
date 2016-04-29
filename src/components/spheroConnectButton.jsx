@@ -256,12 +256,12 @@ rollKyu() {
         <div>
            <button id="connect" className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
            <button className="sleepbutton" onClick={this.sleep}>Sleep</button>
-           <button className="leftbuttons" onClick={this.randomColors}>Random Colors</button>
+           <button className="leftbuttons" onClick={this.rollKyu.bind(this)}>Click to Roll  (then click Start)</button>
           <div className ="centerbuttons">
-            <button className="round-button round-red" onClick={this.red.bind(this)}></button>
-            <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
-            <button className="round-button round-green" onClick={this.rollKyu.bind(this)}>ROLL</button>
-            <button className="round-button random" onClick={this.random.bind(this)}>FREAK</button>
+            <button className="round-button round-red" onClick={this.red.bind(this)}>RED</button>
+            <button className="round-button round-blue" onClick={this.blue.bind(this)}>BLUE</button>
+            <button className="round-button round-green"  onClick={this.randomColors}>BLINK</button>
+            <button className="round-button round-purple" onClick={this.random.bind(this)}>FREAK</button>
           </div>
         </div>
       );

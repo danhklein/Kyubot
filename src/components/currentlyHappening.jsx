@@ -20,7 +20,7 @@ render () {
   return (
     <div>      
       <div id="kyubot">
-        <div className ="clickhere">Click Here to Start!</div>
+        <div className ="clickhere">Start</div>
       </div>
       <div id="result"></div>
     </div>
