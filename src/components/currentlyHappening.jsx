@@ -1,9 +1,29 @@
 import React, { Component } from 'react';
 
-const CurrentlyHappening = () => {
+
+class CurrentlyHappening extends Component {
+constructor() {
+  super();
+
+  this.state = {
+    showStart: false
+  }
+  this.toggle = this.toggle.bind(this)
+}  
+
+toggle() {
+  this.setState({ showStart: !this.state.showStart})
+}
+
+
+render () {
   return (
-    <div id="result"></div>
+    <div>      
+      <div id="kyubot"></div>
+      <div id="result"></div>
+    </div>
   );
+ }
 }
 
 export default CurrentlyHappening;
