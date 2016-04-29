@@ -227,7 +227,6 @@ rollKyu() {
            <button id="connect" className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
 
            <button className="leftbuttons" onClick={this.rollKyu.bind(this)}>Click to Roll  (then click Start)</button>
-           <button className="leftbuttons" onClick={this.randomColors}>Random Colors</button>
 
           <div className ="centerbuttons">
             <button className="round-button round-red" onClick={this.red.bind(this)}>RED</button>

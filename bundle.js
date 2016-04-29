@@ -20145,11 +20145,6 @@
 	          'Click to Roll  (then click Start)'
 	        ),
 	        _react2.default.createElement(
-	          'button',
-	          { className: 'leftbuttons', onClick: this.randomColors },
-	          'Random Colors'
-	        ),
-	        _react2.default.createElement(
 	          'div',
 	          { className: 'centerbuttons' },
 	          _react2.default.createElement(
