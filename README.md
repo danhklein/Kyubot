@@ -21,7 +21,9 @@ Copy and Paste this into your browser and enable the highlighted flag for 'Web B
 
 Restart your browser.
 
-Is your Bluetooth off? Turn on your Bluetooth. 
+Is your Bluetooth off? Turn on your Bluetooth.
+
+Joystick library built by [Jerome Etienne](https://github.com/jeromeetienne)
 
 ##Links:
 -[Sphero Developer Portal](https://developer.gosphero.com/)
