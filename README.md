@@ -23,14 +23,18 @@ Restart your browser.
 
 Is your Bluetooth off? Turn on your Bluetooth.
 
+##Thanks!
+
+
 Joystick library built by [Jerome Etienne](https://github.com/jeromeetienne)
 
-##Links:
+##Links to Learn More
 -[Sphero Developer Portal](https://developer.gosphero.com/)
 -[Unofffical Spheron (Node.JS) SDK](https://github.com/alchemycs/spheron)
 -[Official Sphero.js SDK github](https://github.com/orbotix/sphero.js)
 -[NPM Official Sphero.js SDK set up instructions](https://www.npmjs.com/package/sphero)
 -[Noble NPM](https://github.com/sandeepmistry/noble)
+-[Cylon.js](https://cylonjs.com/documentation/platforms/sphero-ble/)
 -[Orbotix](https://github.com/orbotix)
 
 -[Nimble Ape](https://nimblea.pe/monkey-business/2015/12/17/these-arent-the-droids-youre-looking-for/)
@@ -46,5 +50,4 @@ Joystick library built by [Jerome Etienne](https://github.com/jeromeetienne)
 
 -[Youtube of controlling drone from browser](https://www.youtube.com/watch?v=yILD_ZdXJW4)
 
-Other Robot Modules:
--[Cylon.js](https://cylonjs.com/documentation/platforms/sphero-ble/)
+
