@@ -19,7 +19,6 @@ class KyuPad extends Component {
     this.joystickCalc = this.joystickCalc.bind(this);
     this.buildObjects = this.buildObjects.bind(this);
 
-    // this.createJoystick();
     this.joystickCalc();
 
   }
@@ -33,8 +32,6 @@ class KyuPad extends Component {
       const joystick = new VirtualJoystick({
         container: document.getElementById('kyubot'),
         mouseSupport  : true,
-        baseX: -300,
-        baseY: -300,
         limitStickTravel: true,
         stickRadius: 100
       });
@@ -52,7 +49,7 @@ class KyuPad extends Component {
         let dy = Math.floor(self.joystick.deltaY());
         let speed = Math.floor((Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2)))*2.45);
         let rad = (Math.atan2(self.joystick.deltaY(),self.joystick.deltaX())) + Math.PI;
-        let direction = ((Math.floor(rad * (180 / Math.PI))) + 270) % 360;
+        let direction = ((Math.floor(rad * (180 / Math.PI))) + 90) % 360;
 
         let outputEl  = document.getElementById('result');
             outputEl.innerHTML  = ''
@@ -64,7 +61,6 @@ class KyuPad extends Component {
               + (self.joystick.down()  ? ' down'   : '')
 
               self.buildObjects(speed, direction);
-              // console.log(self.joystick)
 
           }, 50);
 
@@ -73,7 +69,6 @@ class KyuPad extends Component {
 
     buildObjects(speed, direction) {
         let moveHistory = [];
-          // let moveObject = {};
           moveHistory.push({speed: speed, direction: direction});
           let moveObject = {speed: speed, direction: direction};
 
@@ -86,9 +81,6 @@ class KyuPad extends Component {
 
 
    render() {
-    
-    // setTimeout(this.displaySpeed(), 1000);
-    // console.log(this.speedDir)
     return (
       <div>
           <SpheroConnectButton buildObject={ this.state.moveObj } />
@@ -98,8 +90,3 @@ class KyuPad extends Component {
 }
 
 export default KyuPad;
-
-//returns jsx instead of having a method on it
-// const RandomForm =()=>{
-
-// }

@@ -17,6 +17,7 @@ class SpheroConnectButton extends Component {
     this.roll = this.roll.bind(this);
     this.sendCommand = this.sendCommand.bind(this);
     this.spheroConnect = this.spheroConnect.bind(this);
+    this.randomColors = this.randomColors.bind(this);
 
   }
 
@@ -135,7 +136,7 @@ class SpheroConnectButton extends Component {
     .then(device => {
       console.log('> Found ' + device.name);
       console.log('Connecting to GATT Server...');
-      console.log('spinach');
+      console.log('Zebra');
       return device.connectGATT();
     })
     .then(server => {
@@ -234,6 +235,20 @@ rollKyu() {
     this.sleep();
   }
 
+  randomColors() {
+    let self = this;
+    let colors = [[255,0,0], [255,128,0], [255,255,0], [51,255,255],[0,255,0],[0,0,255],[255,51,153]];
+    let curr = "";
+    function change() {
+      let length = colors.length;
+      let rand = Math.floor(Math.random() * (length - 1)) + 1;
+        curr = colors[rand];
+    }
+    setInterval(function() {
+      change();
+      self.setColor(curr[0], curr[1], curr[2]);
+    }, 1000);
+    }
 
     render()
     {
@@ -241,6 +256,7 @@ rollKyu() {
         <div>
            <button id="connect" className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
            <button className="sleepbutton" onClick={this.sleep}>Sleep</button>
+           <button className="leftbuttons" onClick={this.randomColors}>Random Colors</button>
           <div className ="centerbuttons">
             <button className="round-button round-red" onClick={this.red.bind(this)}></button>
             <button className="round-button round-blue" onClick={this.blue.bind(this)}></button>
