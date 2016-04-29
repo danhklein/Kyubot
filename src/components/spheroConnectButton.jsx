@@ -95,23 +95,6 @@ class SpheroConnectButton extends Component {
     })
   }
 
-  sleep() {
-    if (this.state.busy) {
-      // Return if another operation pending
-      return Promise.resolve();
-      }
-    this.setState({ busy:true })
-    let did = 0x02;
-    let cid = 0x22;
-    this.sendCommand(did, cid).then(() => {
-      this.setState({busy: false})
-    })
-    .catch(function (err){
-      console.log(err)
-    })
-
-  }
-
   spheroConnect() {
 
     let radioService;
@@ -222,21 +205,6 @@ rollKyu() {
   }, 50);
 }
 
-<<<<<<< HEAD
-=======
-  toggle() {
-    this.setState ({sleep: !this.state.sleep})
-  }
-
-  clickStart() {
-    this.spheroConnect();
-  }
-
-  clickStop() {
-    this.sleep();
-  }
-
->>>>>>> upstream/master
   randomColors() {
     let self = this;
     let colors = [[255,0,0], [255,128,0], [255,255,0], [51,255,255],[0,255,0],[0,0,255],[255,51,153]];
@@ -257,12 +225,10 @@ rollKyu() {
       return (
         <div>
            <button id="connect" className="leftbuttons" onClick={this.spheroConnect}>Find Sphero</button>
-<<<<<<< HEAD
+
            <button className="leftbuttons" onClick={this.rollKyu.bind(this)}>Click to Roll  (then click Start)</button>
-=======
-           <button className="sleepbutton" onClick={this.sleep}>Sleep</button>
            <button className="leftbuttons" onClick={this.randomColors}>Random Colors</button>
->>>>>>> upstream/master
+
           <div className ="centerbuttons">
             <button className="round-button round-red" onClick={this.red.bind(this)}>RED</button>
             <button className="round-button round-blue" onClick={this.blue.bind(this)}>BLUE</button>
