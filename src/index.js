@@ -14,19 +14,24 @@ class App extends Component {
   render() {
     return (
       <div>
-        <section className="onethird">
-          <NavButtons />
-          <SavedSequences />
-        </section>
-        <section className="onethird">
-          <KyuPad />
-          <CurrentlyHappening />
-        </section>
-        <section className="onethird">
-          <CurrentBuild />
-          <SaveSequence />
-          <ClearCurrent />
-        </section>
+        <div className="row">
+          <img src="images/kyu-1.png" />
+        </div>
+        <div className="row">
+          <section className="onethird">
+            <NavButtons />
+            <SavedSequences />
+          </section>
+          <section className="onethird">
+            <KyuPad />
+            <CurrentlyHappening />
+          </section>
+          <section className="onethird">
+            <CurrentBuild />
+            <SaveSequence />
+            <ClearCurrent />
+          </section>
+        </div>
       </div>
     );
   }
