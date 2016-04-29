@@ -114,8 +114,15 @@ width: 90%;
 }
 
 .centerbuttons {
-  margin: 0 auto;
-  width: 100%;
+  float: right;
+  position: relative;
+  left: -50%; /* or right 50% */
+  text-align: left;
+  width: 90%;
 }
 
+.centerbuttons > .child {
+  position: relative;
+  left: 50%;
+}
 

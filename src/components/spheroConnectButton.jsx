@@ -258,10 +258,10 @@ rollKyu() {
            <button className="sleepbutton" onClick={this.sleep}>Sleep</button>
            <button className="leftbuttons" onClick={this.rollKyu.bind(this)}>Click to Roll  (then click Start)</button>
           <div className ="centerbuttons">
-            <button className="round-button round-red" onClick={this.red.bind(this)}>RED</button>
-            <button className="round-button round-blue" onClick={this.blue.bind(this)}>BLUE</button>
-            <button className="round-button round-green"  onClick={this.randomColors}>BLINK</button>
-            <button className="round-button round-purple" onClick={this.random.bind(this)}>FREAK</button>
+            <button className="round-button round-red child" onClick={this.red.bind(this)}>RED</button>
+            <button className="round-button round-blue child" onClick={this.blue.bind(this)}>BLUE</button>
+            <button className="round-button round-green child"  onClick={this.randomColors}>BLINK</button>
+            <button className="round-button round-purple child" onClick={this.random.bind(this)}>FREAK</button>
           </div>
         </div>
       );
