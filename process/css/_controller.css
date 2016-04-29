@@ -17,6 +17,7 @@
   border: 1px solid;
   font-size: 2rem;
   height: 75px;
+  margin-top: 7px;
   border-radius: 10px;
   border: $color-border;
   color: $color-button;
@@ -57,7 +58,11 @@
 }
 
 .round-green {
-   background-color: #00FF00;
+   background-color: #008800;
+}
+
+.round-purple {
+  background-color: #7D26CD;
 }
 
 /*boxes*/
@@ -92,7 +97,7 @@ width: 90%;
 #kyubot, #clickme {
   margin-top: 25px;
   border: $box-border;
-  border-radius: $box-radius;
+  border-radius: $color-button-border-radius;
   box-shadow: $color-box-shadow;
   background-color: $box-background-color;
   text-align: center;
@@ -103,9 +108,10 @@ width: 90%;
 
 .clickhere {
   padding-top: 80px;
+  border-radius: $color-button-border-radius;
   margin:0 auto;
-  max-width:100%;
-  max-height:100%;
+/*  max-width:100%;
+  max-height:100%;*/
   color: #c6c6c6;
 }
 
