@@ -8,9 +8,9 @@ Unit 3 Team Project Creating Web Bluetooth Controller for Sphero
 
 ## Introduction
 
-Kyubot is a web-browser remote for the bluetooth enabled [Orbotix](https://github.com/orbotix) Sphero Robot. This is only made possible by the current work of the [BlueTooth Web Community](https://webbluetoothcg.github.io/web-bluetooth/) and [only available](http://caniuse.com/#feat=web-bluetooth) behind a development flag for Chrome devices.
+Kyubot is a web-browser remote for the bluetooth enabled [Orbotix](https://github.com/orbotix) BB-8 Robot. This is only made possible by the current work of the [BlueTooth Web Community](https://webbluetoothcg.github.io/web-bluetooth/) and [only available](http://caniuse.com/#feat=web-bluetooth) behind a development flag for Chrome devices.
 
-In order to follow along you should have basic knowledge of React and read up on the Sphero API Docs and Bluetooth BLE and GATT.
+In order to follow along you should have basic knowledge of React, Canvas and read up on the Sphero API Docs and Bluetooth BLE and GATT.
 
 ## Set up
 
@@ -25,8 +25,11 @@ Is your Bluetooth off? Turn on your Bluetooth.
 
 ##Thanks!
 
+Special thanks to the [BlueTooth Web Community](https://webbluetoothcg.github.io/web-bluetooth/) and [Orbotix](https://github.com/orbotix) for making something great.
 
 Joystick library built by [Jerome Etienne](https://github.com/jeromeetienne)
+[Ron Evans](https://github.com/deadprogram) and [François Beaufort](https://github.com/beaufortfrancoi) offered insight and encouragement.
+
 
 ##Links to Learn More
 -[Sphero Developer Portal](https://developer.gosphero.com/)
