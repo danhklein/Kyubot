@@ -118,8 +118,8 @@ class SpheroConnectButton extends Component {
     .then(device => {
       console.log('> Found ' + device.name);
       console.log('Connecting to GATT Server...');
-      console.log('Zebra');
-      return device.connectGATT();
+      console.log('Build: Gryphon');
+        return device.gatt.connect();
     })
     .then(server => {
       gattServer = server;
