@@ -109,10 +109,9 @@ class SpheroConnectButton extends Component {
 
 // Can only send commands once device is in developer mode.
 // Put device into developer mode by sending a special string to Anti DOS,
-// 7 to TX Power and 1 to Wake CPU on radio service.
+// 7 to TX Power and 1 to Wake CPU on radio service
     navigator.bluetooth.requestDevice({
       filters: [{
-        namePrefix: ['BB'],
           //added service
           services: [
               "22bb746f-2bb0-7554-2d6f-726568705327",
@@ -123,7 +122,7 @@ class SpheroConnectButton extends Component {
     .then(device => {
       console.log('> Found ' + device.name);
       console.log('Connecting to GATT Server...');
-      console.log('Build: Kathy');
+      console.log('Build: Kraken');
         return device.gatt.connect();
     })
     .then(server => {
