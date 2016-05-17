@@ -20031,12 +20031,12 @@
 	          filters: [{
 	            namePrefix: ['BB'],
 	            //added service
-	            services: ["22bb746f-2bb0-7554-2d6f-726568705327"]
+	            services: ["22bb746f-2bb0-7554-2d6f-726568705327", "22bb746f-2ba0-7554-2d6f-726568705327"]
 	          }]
 	        }).then(function (device) {
 	          console.log('> Found ' + device.name);
 	          console.log('Connecting to GATT Server...');
-	          console.log('Build: Gryphon');
+	          console.log('Build: Kathy');
 	          return device.gatt.connect();
 	        }).then(function (server) {
 	          gattServer = server;

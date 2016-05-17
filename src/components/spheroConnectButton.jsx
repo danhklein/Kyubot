@@ -115,15 +115,15 @@ class SpheroConnectButton extends Component {
         namePrefix: ['BB'],
           //added service
           services: [
-              "22bb746f-2bb0-7554-2d6f-726568705327"
-
+              "22bb746f-2bb0-7554-2d6f-726568705327",
+              "22bb746f-2ba0-7554-2d6f-726568705327"
               ]
       }]
     })
     .then(device => {
       console.log('> Found ' + device.name);
       console.log('Connecting to GATT Server...');
-      console.log('Build: Gryphon');
+      console.log('Build: Kathy');
         return device.gatt.connect();
     })
     .then(server => {
