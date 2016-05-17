@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed91c3c4-7aa1-447f-a3df-841e15f65069" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/spheroConnectButton.jsx" afterPath="$PROJECT_DIR$/src/components/spheroConnectButton.jsx" />
     </list>
     <ignored path="Kyubot.iws" />
@@ -47,8 +46,8 @@
       <file leaf-file-name="spheroConnectButton.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/spheroConnectButton.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="122" column="52" selection-start-line="122" selection-start-column="52" selection-end-line="122" selection-end-column="52" />
+            <state relative-caret-position="246">
+              <caret line="117" column="53" selection-start-line="117" selection-start-column="53" selection-end-line="117" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -90,10 +89,10 @@
         <entry file="file://$PROJECT_DIR$/bundle.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="5820">
-              <caret line="391" column="0" selection-start-line="391" selection-start-column="0" selection-end-line="391" selection-end-column="0" />
+              <caret line="392" column="0" selection-start-line="392" selection-start-column="0" selection-end-line="392" selection-end-column="0" />
               <folding>
                 <element signature="e#152#160#0" expanded="false" />
-                <marker date="1463506666000" expanded="true" signature="1501:2405" placeholder="{...}" />
+                <marker date="1463508505000" expanded="true" signature="1501:2405" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -146,7 +145,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="83" />
+    <option name="x" value="25" />
+    <option name="y" value="25" />
     <option name="width" value="1280" />
     <option name="height" value="636" />
   </component>
@@ -346,12 +346,12 @@
       <workItem from="1462163940052" duration="75000" />
       <workItem from="1463103996428" duration="2615000" />
       <workItem from="1463455744995" duration="728000" />
-      <workItem from="1463461279165" duration="1084000" />
+      <workItem from="1463461279165" duration="1297000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18346000" />
+    <option name="totallyTimeSpent" value="18559000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -363,7 +363,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="83" width="1280" height="636" extended-state="0" />
+    <frame x="25" y="25" width="1280" height="636" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24543288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -418,7 +418,7 @@
           <caret line="373" column="0" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
           <folding>
             <element signature="e#152#160#0" expanded="false" />
-            <marker date="1463506666000" expanded="true" signature="1501:2405" placeholder="{...}" />
+            <marker date="1463508505000" expanded="true" signature="1501:2405" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -475,7 +475,7 @@
           <caret line="371" column="0" selection-start-line="371" selection-start-column="0" selection-end-line="371" selection-end-column="0" />
           <folding>
             <element signature="e#152#160#0" expanded="false" />
-            <marker date="1463506666000" expanded="true" signature="1501:2405" placeholder="{...}" />
+            <marker date="1463508505000" expanded="true" signature="1501:2405" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -532,7 +532,7 @@
           <caret line="371" column="0" selection-start-line="371" selection-start-column="0" selection-end-line="371" selection-end-column="0" />
           <folding>
             <element signature="e#152#160#0" expanded="false" />
-            <marker date="1463506666000" expanded="true" signature="1501:2405" placeholder="{...}" />
+            <marker date="1463508505000" expanded="true" signature="1501:2405" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -589,7 +589,7 @@
           <caret line="371" column="0" selection-start-line="371" selection-start-column="0" selection-end-line="371" selection-end-column="0" />
           <folding>
             <element signature="e#152#160#0" expanded="false" />
-            <marker date="1463506666000" expanded="true" signature="1501:2405" placeholder="{...}" />
+            <marker date="1463508505000" expanded="true" signature="1501:2405" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -650,8 +650,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/spheroConnectButton.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="122" column="52" selection-start-line="122" selection-start-column="52" selection-end-line="122" selection-end-column="52" />
+        <state relative-caret-position="246">
+          <caret line="117" column="53" selection-start-line="117" selection-start-column="53" selection-end-line="117" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -685,10 +685,10 @@
     <entry file="file://$PROJECT_DIR$/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5820">
-          <caret line="391" column="0" selection-start-line="391" selection-start-column="0" selection-end-line="391" selection-end-column="0" />
+          <caret line="392" column="0" selection-start-line="392" selection-start-column="0" selection-end-line="392" selection-end-column="0" />
           <folding>
             <element signature="e#152#160#0" expanded="false" />
-            <marker date="1463506666000" expanded="true" signature="1501:2405" placeholder="{...}" />
+            <marker date="1463508505000" expanded="true" signature="1501:2405" placeholder="{...}" />
           </folding>
         </state>
       </provider>
