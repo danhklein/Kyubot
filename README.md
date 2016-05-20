@@ -1,5 +1,6 @@
 
-[Play here!](http://danhklein.github.io/Kyubot)
+Visit the deployed project and play around here (currently only compatible with Chromebook because of Web Bluetooth API):
+[kyubot.info](http://kyubot.info)
 
 
 Unit 3 Team Project Creating Web Bluetooth Controller for Sphero
