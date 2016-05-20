@@ -195,13 +195,18 @@ class SpheroConnectButton extends Component {
 
 red() {
   return this.setColor(255,0,0)
-
 }
 
 blue() {
   return this.setColor(0,0,255)
-
 }
+
+green() {
+  return this.setColor(0,255,0)
+}
+
+
+
 rollKyu() {
   let self = this
   setInterval(function() {
@@ -232,11 +237,15 @@ rollKyu() {
 
            <button className="leftbuttons" onClick={this.rollKyu.bind(this)}>Click to Roll  (then click Start)</button>
 
-          <div className ="centerbuttons">
-            <button className="round-button round-red" onClick={this.red.bind(this)}>RED</button>
-            <button className="round-button round-blue" onClick={this.blue.bind(this)}>BLUE</button>
-            <button className="round-button round-green"  onClick={this.randomColors}>BLINK</button>
-            <button className="round-button round-purple" onClick={this.random.bind(this)}>FREAK</button>
+          <div className ="center">
+            <button className="round-button round-red child" onClick={this.red.bind(this)}>RED</button>
+            <button className="round-button round-blue child" onClick={this.blue.bind(this)}>BLUE</button>
+            <button className="round-button round-green child" onClick={this.green.bind(this)}>GREEN</button>
+          </div>
+          <div className="clear"></div>  
+          <div className ="center">
+            <button className="round-button round-yellow child"  onClick={this.randomColors}>BLINK</button>
+            <button className="round-button round-purple child" onClick={this.random.bind(this)}>FREAK</button>
           </div>
         </div>
       );
