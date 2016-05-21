@@ -242,7 +242,7 @@ rollKyu() {
             <button className="round-button round-blue child" onClick={this.blue.bind(this)}>BLUE</button>
             <button className="round-button round-green child" onClick={this.green.bind(this)}>GREEN</button>
           </div>
-          <div className="clear"></div>  
+          <div className="clear"></div>
           <div className ="center">
             <button className="round-button round-yellow child"  onClick={this.randomColors}>BLINK</button>
             <button className="round-button round-purple child" onClick={this.random.bind(this)}>FREAK</button>

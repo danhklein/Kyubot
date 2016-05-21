@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 
 class NavButtons extends Component {
-  
+
   state = {
     isShowingModal: false,
   }
@@ -18,7 +18,13 @@ class NavButtons extends Component {
         <ModalContainer onClose={this.handleClose}>
           <ModalDialog onClose={this.handleClose}>
             <h1>Instructions</h1>
-            <p>Put it here</p>
+            <p>Kyubot is a web-browser remote for the bluetooth enabled Sphero BB-8 Robot. This is only made possible by the current work of the Web BlueTooth Community.</p>
+            <h2>Set up</h2>
+            <p>Copy and Paste chrome://flags/#enable-web-bluetooth and enable the highlighted flag for 'Web Bluetooth'.</p>
+            <p>Restart Browser</p>
+            <p>Double Click Find Sphero (You may need to do this twice)</p>
+            <p>Have fun! There's more functionality to come!</p>
+
           </ModalDialog>
         </ModalContainer>
       }
