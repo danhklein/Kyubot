@@ -17,6 +17,7 @@ class NavButtons extends Component {
         this.state.isShowingModal &&
         <ModalContainer onClose={this.handleClose}>
           <ModalDialog onClose={this.handleClose}>
+            <button className="close_modal" onClick={this.handleClose}>X</button>
             <h1>Instructions</h1>
             <p>Kyubot is a web-browser remote for the bluetooth enabled Sphero BB-8 Robot. This is only made possible by the current work of the Web BlueTooth Community.</p>
             <h2>Set up</h2>
