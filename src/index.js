@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div>
         <div className="row">
-          <img src="images/kyu-1.png" />
+          <img src="images/kyubot2.png" />
         </div>
         <div className="row">
           <section className="onethird">

@@ -129,5 +129,9 @@ width: 90%;
   color: #c6c6c6;
 }
 
-
+.close_modal {
+  float: right;
+  padding: 5px;
+  border-radius: 5px;
+}
 
