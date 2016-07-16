@@ -1,21 +1,23 @@
 
-Visit the deployed project and play around here (currently only compatible with Chromebook because of Web Bluetooth API):
-[kyubot.info](http://kyubot.info)
-
-
-Unit 3 Team Project Creating Web Bluetooth Controller for Sphero
-
 # Kyubot!
 
-## Introduction
+Kyubot is a web-browser remote for the bluetooth enabled [Orbotix](https://github.com/orbotix) BB-8 Robot. The app is built using React, jQuery, Canvas, PostCSS, the Sphero API and the Web Bluetooth API.
 
-Kyubot is a web-browser remote for the bluetooth enabled [Orbotix](https://github.com/orbotix) BB-8 Robot. This is only made possible by the current work of the [BlueTooth Web Community](https://webbluetoothcg.github.io/web-bluetooth/) and [only available](http://caniuse.com/#feat=web-bluetooth) behind a development flag for Chrome devices.
+Visit [kyubot.info](http://kyubot.info), but you might want to check directions below first.
 
-In order to follow along you should have basic knowledge of React, Canvas and read up on the Sphero API Docs and Bluetooth BLE and GATT.
+## What it is
 
-## Set up
+Kyubot allows you to control the movements, change the colors or set free your Sphero BB-8 all from the comfort of your Chrome Browser!
 
-Currently in order to send commands to a BLE device through the Web Bluetooth API you will require a device running chrome OS.
+[![Kyubot!](http://img.youtube.com/vi/MvOrB-9AXss/0.jpg)](https://www.youtube.com/watch?v=MvOrB-9AXss)
+
+## How to use it
+
+The Web Blutooth API is currently in development by the [BlueTooth Web Community](https://webbluetoothcg.github.io/web-bluetooth/) and [only available](http://caniuse.com/#feat=web-bluetooth) behind a development flag for Chrome devices.
+
+### Set up
+
+Currently in order to send commands to a BLE device through the Web Bluetooth API you will require a device running Chrome OS.
 
 Copy and Paste this into your browser and enable the highlighted flag for 'Web Bluetooth'.
 >chrome://flags/#enable-web-bluetooth
