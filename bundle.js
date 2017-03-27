@@ -20023,14 +20023,17 @@
 	      var heading = 0;
 
 	      document.querySelector('#connect').addEventListener('click', function () {
+	        console.log('click found');
 
 	        // Can only send commands once device is in developer mode.
 	        // Put device into developer mode by sending a special string to Anti DOS,
 	        // 7 to TX Power and 1 to Wake CPU on radio service
 	        navigator.bluetooth.requestDevice({
 	          filters: [{
-	            //added service
-	            services: ["22bb746f-2bb0-7554-2d6f-726568705327", "22bb746f-2ba0-7554-2d6f-726568705327"]
+	            services: ['22bb746f-2bb0-7554-2d6f-726568705327']
+	          }, {
+	            // Some BB8 toys advertise -2ba0- instead of -2bb0-.
+	            services: ['22bb746f-2ba0-7554-2d6f-726568705327']
 	          }]
 	        }).then(function (device) {
 	          console.log('> Found ' + device.name);
