@@ -106,6 +106,7 @@ class SpheroConnectButton extends Component {
 
 
     document.querySelector('#connect').addEventListener('click', () => {
+    console.log('click found')
 
 // Can only send commands once device is in developer mode.
 // Put device into developer mode by sending a special string to Anti DOS,
