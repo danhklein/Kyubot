@@ -112,11 +112,10 @@ class SpheroConnectButton extends Component {
 // 7 to TX Power and 1 to Wake CPU on radio service
     navigator.bluetooth.requestDevice({
       filters: [{
-          //added service
-          services: [
-              "22bb746f-2bb0-7554-2d6f-726568705327",
-              "22bb746f-2ba0-7554-2d6f-726568705327"
-              ]
+        services: ['22bb746f-2bb0-7554-2d6f-726568705327']
+            }, {
+        // Some BB8 toys advertise -2ba0- instead of -2bb0-.
+        services: ['22bb746f-2ba0-7554-2d6f-726568705327']
       }]
     })
     .then(device => {
